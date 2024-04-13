@@ -12,34 +12,54 @@
 ## ユーザー層について
 ゆるいSNSで交流したい人。<br>
 既存のSNSでは個としての発信力依存となり、それに疲れてしまう人もいる。<br>
-ご当地あるあるったー（仮名）なら、最初から地域というグループに所属している状態かつ普遍的なテーマなので、投稿しやすい。<br>
+ご当地あるあるったー（仮名）なら、最初から地域というグループに所属している状態かつ普遍的なテーマなので、投稿しやすい。
+
 ## サービスの利用イメージ
 - 様々な地域のあるあるエピソードが見られる。
 - 地域が近い人同士で共感でき、コメントなどで交流できる。
 - 現実で人に出身地を聞いたとき、その地域の投稿一覧を見ることで話の種になる。
 - 投稿を見ることで引越し先や旅行先の雰囲気を感じることができる。
+
 ## ユーザーの獲得について
 X(旧Twitter)で投稿を共有できるようにして、導線を増やす。
 ## サービスの差別化ポイント・推しポイント
 既存のSNSだと特定のおそれもあり地域の話はしにくいが、地域の話のみ投稿のサービスなので気兼ねなく住んでいる場所の話ができる。
 ## 使用技術一覧
-- Ruby
-- Ruby on Rails
-- MySQL
-- Fly.io
+- 開発環境: Docker
+- サーバサイド: Ruby on Rails 7系
+<br>Ruby 3.2.2 Rails 7.1.3
+- フロントエンド: HotWire
+- CSSフレームワーク: bootstrap5系
+- WebAPI: [GeolocationAPI](https://developers.google.com/maps/documentation/geolocation/overview?hl=ja)、[都道府県一覧API](https://opendata.resas-portal.go.jp/docs/api/v1/prefectures.html)、[市区町村一覧API](https://opendata.resas-portal.go.jp/docs/api/v1/cities.html)
+#### インフラ:
+- Webアプリケーションサーバ: Heroku
+- データベースサーバ: PostgresSQL
+
 ## 機能候補
 #### MVPリリース
 - CRUD機能
+- 「このアプリについて」ページ
+- ログイン(sorcery)
 - マイページ
 - 選択肢から都道府県・市区町村を指定して投稿する機能
-- 都道府県・市区町村を指定して検索
+- 都道府県・市区町村を指定して検索(ransack)
 - トップ画面に新着一覧
-- 投稿にコメント
-- 画像アップデート
+- 投稿にコメント(Ajax)
+- 画像アップデート(ActiveStorage)
 - 既存サービスでログイン
+- ページネーション機能(kaminari)
+- 共有ボタン(X等)
 #### 本リリース
-- 位置情報で投稿地域指定
-- いいね（あるある！）ボタン
+- adminユーザーの投稿管理
+- 位置情報で投稿地域指定(geolocation)
+- いいね（あるある！）ボタン(Ajax)
 - 通知機能
-## 機能の実装方針予定
-[GeolocationAPI](https://developers.google.com/maps/documentation/geolocation/overview?hl=ja)、[都道府県一覧API](https://opendata.resas-portal.go.jp/docs/api/v1/prefectures.html)、[市区町村一覧API](https://opendata.resas-portal.go.jp/docs/api/v1/cities.html)
+- パンくずリスト(gretel)
+- シームレススクロール(Ajax)
+
+## 追加サービス案
+- 地域検索のオートコンプリート
+- タグ機能
+- 通報・ブロック機能
+- トップ画面に投稿があった地域の色が濃くなる日本地図を設置
+- プロフィールに設定したエリアの新着投稿のトップ画面表示
