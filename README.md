@@ -68,4 +68,4 @@ X(旧Twitter)で投稿を共有できるようにして、導線を増やす。
 - プロフィールに設定したエリアの新着投稿のトップ画面表示
 
 ## 画面遷移図
-[Figma](https://www.figma.com/file/97V8RVoHVMVQF20UCi6sPL/%E5%9C%B0%E5%9F%9F%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B%E3%82%A2%E3%83%97%E3%83%AA%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=whiteboard&node-id=0%3A1&t=b6YuxkbUfSwLrdWY-1)
+[Figma](https://www.figma.com/file/C6nwG8Amj8UWj3kLeZvxkx/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Ohwb7qEoPWtmLxvC-1)
