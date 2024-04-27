@@ -66,3 +66,6 @@ X(旧Twitter)で投稿を共有できるようにして、導線を増やす。
 - 通報・ブロック機能
 - トップ画面に投稿があった地域の色が濃くなる日本地図を設置
 - プロフィールに設定したエリアの新着投稿のトップ画面表示
+
+## 画面遷移図
+[Figma](https://www.figma.com/file/C6nwG8Amj8UWj3kLeZvxkx/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Ohwb7qEoPWtmLxvC-1)
