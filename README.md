@@ -84,6 +84,9 @@ cities ||--o{ posts: ""
 users ||--o{ bookmarks:""
 posts ||--o{ bookmarks:""
 users ||--o{ authenticates:""
+users ||--o{ notifications:""
+posts ||--o{ notifications:""
+comments ||--o{ notifications:""
 
 users {
 integer id PK
@@ -94,17 +97,14 @@ text password_digest
 integer role
 integer prefecture_id FK
 integer city_id FK
-timestamp created_at
-timestamp updated_at
 }
 
 posts{
 integer id PK
 integer prefecture_id FK
 integer city_id FK
-text post_image
+string image
 text content
-timestamp created_at
 }
 
 comments{
@@ -112,7 +112,6 @@ integer id PK
 integer user_id FK
 integer post_id FK
 text content
-timestamp created_at
 }
 
 prefectures{
@@ -137,5 +136,14 @@ integer id PK
 string provider
 string uid
 integer user_id FK
+}
+
+notifications{
+integer visitor_id(user_id) FK
+integer visited_id(user_id) FK
+integer post_id FK
+integer comment_id FK
+string action
+boolean checked
 }
 ```
