@@ -38,7 +38,7 @@ X(旧Twitter)で投稿を共有できるようにして、導線を増やす。
 ## 機能候補
 #### MVPリリース
 - ユーザー登録
-- ログイン(sorcery)
+- ログイン(devise)
 - マイページ
 - ユーザー情報の変更機能（ユーザー名、メールアドレス、パスワード、地域、アイコン）
 - あるあるの投稿機能、投稿の削除機能
@@ -69,3 +69,81 @@ X(旧Twitter)で投稿を共有できるようにして、導線を増やす。
 
 ## 画面遷移図
 [Figma](https://www.figma.com/file/C6nwG8Amj8UWj3kLeZvxkx/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Ohwb7qEoPWtmLxvC-1)
+
+## ER図
+```mermaid
+erDiagram
+users ||--o{ posts: ""
+users ||--o{ comments: ""
+posts ||--o{ comments: ""
+prefectures ||--o{ users: ""
+cities ||--o{ users: ""
+cities }o--|| prefectures: ""
+prefectures ||--o{ posts: ""
+cities ||--o{ posts: ""
+users ||--o{ bookmarks:""
+posts ||--o{ bookmarks:""
+users ||--o{ authenticates:""
+users ||--o{ notifications:""
+posts ||--o{ notifications:""
+comments ||--o{ notifications:""
+
+users {
+integer id PK
+string name
+text avatar
+string email
+text password_digest
+integer role
+integer prefecture_id FK
+integer city_id FK
+}
+
+posts{
+integer id PK
+integer prefecture_id FK
+integer city_id FK
+string image
+text content
+}
+
+comments{
+integer id PK
+integer user_id FK
+integer post_id FK
+text content
+}
+
+prefectures{
+integer id PK
+string name
+}
+
+cities{
+integer id PK
+integer prefecture_id FK
+string name
+}
+
+bookmarks{
+integer id PK
+integer user_id FK
+integer post_id FK
+}
+
+authenticates{
+integer id PK
+string provider
+string uid
+integer user_id FK
+}
+
+notifications{
+integer visitor_id(user_id) FK
+integer visited_id(user_id) FK
+integer post_id FK
+integer comment_id FK
+string action
+boolean checked
+}
+```
