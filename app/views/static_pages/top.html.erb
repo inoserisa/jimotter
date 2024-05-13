@@ -2,9 +2,19 @@
 <html>
   <head>
     <title>jimotter APP</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
-
-  <body>
-    <h1>トップ画面</h1>
-  </body>
+<body>
+  <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 10vh;">
+    <h3 class="mb-0 mt-5 text-center">住んでいる地域のあるあるを</h3>
+    <h3 class="text-center">投稿しよう</h3>
+    <div class="d-flex justify-content-center">
+      <% if user_signed_in? %>
+        <%= link_to "投稿", "#", class: "btn btn-danger btn-lg" %>
+      <% else %>
+        <%= link_to "ログインして投稿", new_user_session_path, class: "btn btn-danger btn-lg" %>
+      <% end %>
+    </div>
+  </div>
+</body>
 </html>
