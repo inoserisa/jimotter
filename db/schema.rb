@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_12_163558) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_16_092003) do
+  create_table "cities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.bigint "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
+  end
+
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "prefecture_id"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_posts_on_city_id"
+    t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "prefectures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,4 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_12_163558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cities", "prefectures"
+  add_foreign_key "posts", "cities"
+  add_foreign_key "posts", "prefectures"
+  add_foreign_key "posts", "users"
 end

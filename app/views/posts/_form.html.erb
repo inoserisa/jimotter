@@ -1,0 +1,43 @@
+<%= form_with model: @post, local:true do |f| %>
+  <div class="mb-3">
+    <%= f.label "都道府県" %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "都道府県を選択" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label "市区町村" %>
+    <%= f.collection_select :city_id, [], :id, :name, prompt: "市区町村を選択" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control', rows:7 %>
+  </div>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
+<% end %>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var prefectureSelect = document.querySelector('select[name="post[prefecture_id]"]');
+  var citySelect = document.querySelector('select[name="post[city_id]"]');
+
+  prefectureSelect.addEventListener("change", function() {
+    var prefectureId = this.value;
+
+    if (prefectureId) {
+      fetch(`/cities.json?prefecture_id=${prefectureId}`)
+        .then(response => response.json())
+        .then(data => {
+          citySelect.innerHTML = '<option value="">市区町村を選択</option>';
+          data.forEach(function(city) {
+            var option = document.createElement('option');
+            option.value = city.id;
+            option.text = city.name;
+            citySelect.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+      citySelect.innerHTML = '<option value="">市区町村を選択</option>';
+    }
+  });
+});
+</script>
