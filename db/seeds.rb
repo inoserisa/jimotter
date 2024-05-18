@@ -16,7 +16,7 @@ CSVROW_PREFNAME = 6
 CSVROW_CITYNAME = 7
 
 # CSVファイルを読み込み、DB（テーブル）へ保存
-CSV.foreach('db/csv/prefecture.CSV') do |row|
+CSV.foreach('db/CSV/prefecture.CSV') do |row|
   prefecture_name = row[CSVROW_PREFNAME]
   city_name = row[CSVROW_CITYNAME]
   prefecture = Prefecture.find_or_create_by(name: prefecture_name)
