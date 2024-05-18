@@ -6,8 +6,8 @@
   </head>
 <body>
   <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 10vh;">
-    <h3 class="mb-0 mt-5 text-center">住んでいる地域のあるあるを</h3>
-    <h3 class="text-center">投稿しよう</h3>
+    <h1 class="mb-0 mt-5 text-center custom-title">住んでいる地域のあるあるを</h1>
+    <h1 class="text-center custom-title">投稿しよう</h1>
     <div class="d-flex justify-content-center">
       <% if user_signed_in? %>
         <%= link_to "投稿", new_post_path, data: { turbo: false }, class: "btn btn-danger btn-lg rounded-pill" %>
