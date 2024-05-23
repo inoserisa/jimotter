@@ -1,5 +1,6 @@
 body {
   background-color: #FFF6ED;
+  padding-top: 56px;
 }
 
 .custom-title {
@@ -9,4 +10,22 @@ body {
 
 .header-color {
   background-color: #A3DA8D;
+}
+
+.footer-color {
+  background-color:#146356;
+}
+
+.area-box {
+  background-color: #146356;
+  color: white;
+  border-radius: 5px;
+  font-size: small;
+  padding: 4px 6px;
+  font-weight: bold;
+}
+
+.post-button {
+  width: 80%;
+  font-size: 20px;
 }

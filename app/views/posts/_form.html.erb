@@ -1,14 +1,13 @@
 <%= form_with model: @post, local:true do |f| %>
   <div class="mb-3">
-    <%= f.label "都道府県" %>
+    <%= f.label "都道府県：" %>
     <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "都道府県を選択" %>
   </div>
   <div class="mb-3">
-    <%= f.label "市区町村" %>
+    <%= f.label "市区町村：" %>
     <%= f.collection_select :city_id, [], :id, :name, prompt: "市区町村を選択" %>
   </div>
   <div class="mb-3">
-    <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control', rows:7 %>
   </div>
   <%= f.submit "投稿", class: "btn btn-primary" %>

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
 <body>
-  <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 10vh;">
-    <h1 class="mb-0 mt-5 text-center custom-title">住んでいる地域のあるあるを</h1>
+  <div class="container flex-column align-items-center justify-content-center" style="min-height: 10vh;">
+    <h1 class="mb-0 mt-5 text-center custom-title">知ってる地域のあるあるを</h1>
     <h1 class="text-center custom-title">投稿しよう</h1>
     <div class="d-flex justify-content-center">
       <% if user_signed_in? %>
-        <%= link_to "投稿", new_post_path, data: { turbo: false }, class: "btn btn-danger btn-lg rounded-pill" %>
+          <%= link_to "投稿", new_post_path, class: "btn btn-danger rounded-pill mt-2 post-button", data: { turbo: false } %>
       <% else %>
-        <%= link_to "ログインして投稿", new_user_session_path, class: "btn btn-danger btn-lg rounded-pill" %>
+        <%= link_to "ログインして投稿", new_user_session_path, class: "btn btn-danger rounded-pill mt-2 post-button" %>
       <% end %>
     </div>
 
@@ -20,15 +20,18 @@
       <div class="row">
         <h6>新着投稿</h6>
         <% @posts.each do |post| %>
-          <%= link_to post, class: "col-12 card mb-3 text-decoration-none" do %>
+          <div class="col-12 card mb-3 text-decoration-none shadow">
             <div class="card-body">
-              <h6 class="mb-0 font-weight-bold"><%= post.user.name %></h6>
-              <p><%= post.prefecture.name %></p>
-              <p><%= post.city.name %></p>
+              <div class="d-flex mb-2">
+                <%= post.user.name %>
+                <div class="area-box ms-2"><%= post.prefecture.name %></div>
+                <div class="area-box ms-2"><%= post.city.name %></div>
+                <div class="ms-auto"><%= link_to "詳細", post_path(post.id) %></div>
+              </div>
               <p class="mb-0"><%= post.content %></p>
-              <small class="mb-0"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></small>
+              <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </div>
