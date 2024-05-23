@@ -1,8 +1,12 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <h1>新規投稿</h1>
-      <%= render 'form', { post: @post } %>
+  <div class="row justify-content-center">
+    <div class="col-10 card shadow">
+      <div class="card-body">
+        <div class="col-lg-8 offset-lg-2">
+          <h2 class="pb-4 text-center"><%= t('.post') %></h2>
+          <%= render 'form', { post: @post } %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
