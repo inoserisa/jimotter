@@ -23,7 +23,7 @@
           <div class="col-12 card mb-3 text-decoration-none shadow">
             <div class="card-body">
               <div class="d-flex mb-2">
-                <%= post.user.name %>
+                <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
                 <div class="area-box ms-2"><%= post.prefecture.name %></div>
                 <div class="area-box ms-2"><%= post.city.name %></div>
                 <div class="ms-auto"><%= link_to "詳細", post_path(post.id) %></div>

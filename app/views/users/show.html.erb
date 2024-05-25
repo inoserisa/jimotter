@@ -1,0 +1,24 @@
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-10 card shadow">
+			<div class="card-body">
+        <h6>ユーザー名：<%= @user.name %></h6>
+
+        <% @posts.each do |post| %>
+          <div class="post card mb-2">
+            <div class="card-body px-4 py-3">
+              <div class="d-flex mb-2">
+                <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
+                <div class="area-box ms-2"><%= post.prefecture.name %></div>
+                <div class="area-box ms-2"><%= post.city.name %></div>
+                <small class="ms-2"><%= l post.created_at %></small>
+                <div class="ms-auto"><%= link_to "詳細", post_path(post) %></div>
+              </div>
+              <p class="mb-0"><%= post.content %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
