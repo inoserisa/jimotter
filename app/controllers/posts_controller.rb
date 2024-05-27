@@ -1,7 +1,17 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all.includes(:user,:prefecture,:city).order(created_at: :desc)
+    # @posts = Post.all.includes(:user,:prefecture,:city).order(created_at: :desc)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user, :prefecture, :city)
+
+    @prefecture_id = params[:q][:prefecture_id_eq] if params[:q].present?
+    @city_id = params[:q][:city_id_eq] if params[:q].present?
+
+    @prefecture = Prefecture.find_by(id: @prefecture_id) if @prefecture_id.present?
+    @city = City.find_by(id: @city_id) if @city_id.present?
+
+    @count = @posts.count
   end
   
   def new

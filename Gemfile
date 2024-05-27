@@ -76,3 +76,5 @@ gem 'rails-i18n'
 gem 'devise-i18n-views'
 
 gem 'devise-bootstrap5'
+
+gem 'ransack'

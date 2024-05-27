@@ -38,3 +38,29 @@ body {
 .comment-border {
   border-color:gray;
 }
+
+.search-button {
+  background-color: #146356;
+  font-weight: bold;
+}
+
+.search-button:hover {
+  background-color: #115549;
+}
+
+.prefecture-box {
+  width: 200px;
+}
+
+.city-box {
+  width: 300px;
+}
+
+@media(max-width: 767px) {
+  .prefecture-box {
+    width: 150px;
+  }
+  .city-box {
+    width: 200px;
+  }
+}
