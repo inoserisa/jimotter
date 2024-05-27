@@ -1,9 +1,19 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12">
-      <div class="row">
-        <%= render @posts %>
+      <div class="d-flex justify-content-center">
+        <div class="mb-5">
+          <%= render 'searchform', q: @q %>
+        </div>
       </div>
+      <div>
+        <% if @prefecture.present? && @city.present? %>
+          <h4>
+            <%= @prefecture.name %> <%= @city.name %> の結果 <%= @count %> 件
+          </h4>
+        <% end %>
+      </div>
+      <%= render 'post' %>
     </div>
   </div>
 </div>

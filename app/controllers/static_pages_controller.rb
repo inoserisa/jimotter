@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def top
-    @posts = Post.order(created_at: :desc).limit(10)
-    @prefecture = Prefecture.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user, :prefecture, :city)
   end
 end

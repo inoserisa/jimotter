@@ -27,8 +27,16 @@ body {
 }
 
 .post-button {
-  width: 80%;
-  font-size: 20px;
+  width: 60%;
+  font-size: 25px;
+}
+
+.postcreate-button {
+  background-color: #146356;
+}
+
+.postcreate-button:hover {
+  background-color: #115549;
 }
 
 .name-link {
@@ -37,4 +45,53 @@ body {
 
 .comment-border {
   border-color:gray;
+}
+
+.search-button {
+  background-color: #146356;
+  font-weight: bold;
+}
+
+.search-button:hover {
+  background-color: #115549;
+}
+
+.prefecture-box {
+  width: 200px;
+}
+
+.city-box {
+  width: 300px;
+}
+
+@media(max-width: 767px) {
+  .prefecture-box {
+    width: 150px;
+  }
+  .city-box {
+    width: 200px;
+  }
+  .post-button {
+    width: 80%;
+    font-size: 20px;
+  }
+}
+
+.fadeUp {
+  animation-name: fadeUpAnime;/*アニメーションの定義名*/
+  animation-duration:1s;/*アニメーション変化時間 ※デフォルト*/
+  animation-fill-mode:forwards;/*アニメーションの開始と終了時の状態を指定*/
+  opacity:0;
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
 }

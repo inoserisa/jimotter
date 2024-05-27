@@ -1,0 +1,69 @@
+        <!-- app/views/posts/_search_form.html.erb -->
+        <%= search_form_for @q do |f| %>
+          <div class="d-flex">
+            <div class="form-group">
+              <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, { prompt: "都道府県" }, { class: "form-select form-select-lg prefecture-box" } %>
+            </div>
+            <div class="form-group mx-2">
+              <%= f.collection_select :city_id_eq, City.where(prefecture_id: params.dig(:q, :prefecture_id_eq)), :id, :name, { prompt: "市区町村", selected: params.dig(:q, :city_id_eq) }, { class: "form-select form-select-lg city-box" } %>
+            </div>
+            <div class="actions form-group ms-auto">
+              <%= f.submit "検索", class: "btn btn-lg text-light search-button" %>
+            </div>
+          </div>
+        <% end %>
+
+        <script>
+          function initializeCitySelectForSearch() {
+            var prefectureSelect = document.querySelector('select[name="q[prefecture_id_eq]"]');
+            var citySelect = document.querySelector('select[name="q[city_id_eq]"]');
+        
+            if (!prefectureSelect || !citySelect) {
+              console.error('Select elements not found');
+              return;
+            }
+        
+            function updateCityOptions(prefectureId, selectedCityId = null) {
+              if (prefectureId) {
+                fetch(`/cities.json?prefecture_id=${prefectureId}`)
+                  .then(response => response.json())
+                  .then(data => {
+                    citySelect.innerHTML = '<option value="">選択してください</option>';
+                    data.forEach(function(city) {
+                      var option = document.createElement('option');
+                      option.value = city.id;
+                      option.text = city.name;
+                      citySelect.appendChild(option);
+                    });
+        
+                    if (selectedCityId) {
+                      citySelect.value = selectedCityId;
+                    }
+                  })
+                  .catch(error => console.error('Error:', error));
+              } else {
+                citySelect.innerHTML = '<option value="">選択してください</option>';
+              }
+            }
+        
+            prefectureSelect.addEventListener("change", function() {
+              var prefectureId = this.value;
+              updateCityOptions(prefectureId);
+            });
+        
+            var initialPrefectureId = prefectureSelect.value;
+            var initialSelectedCityId = citySelect.value;
+        
+            if (initialPrefectureId) {
+              updateCityOptions(initialPrefectureId, initialSelectedCityId);
+            }
+          }
+        
+          document.addEventListener("DOMContentLoaded", function() {
+            initializeCitySelectForSearch();
+          });
+        
+          document.addEventListener("turbo:load", function() {
+            initializeCitySelectForSearch();
+          });
+        </script>
