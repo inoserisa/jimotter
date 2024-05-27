@@ -8,9 +8,9 @@
       </div>
       <div>
         <% if @prefecture.present? && @city.present? %>
-          <h3>
+          <h4>
             <%= @prefecture.name %> <%= @city.name %> の結果 <%= @count %> 件
-          </h3>
+          </h4>
         <% end %>
       </div>
       <%= render 'post' %>
