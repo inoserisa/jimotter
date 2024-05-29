@@ -1,14 +1,14 @@
 <% @posts.each do |post| %>
-<div class="col-12 card mb-3 text-decoration-none shadow fadeUp">
-  <div class="card-body">
-    <div class="d-flex mb-2">
-      <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
-      <div class="area-box ms-2"><%= post.prefecture.name %></div>
-      <div class="area-box ms-2"><%= post.city.name %></div>
-      <div class="ms-auto"><%= link_to "詳細", post_path(post.id) %></div>
+  <div class="col-12 card mb-3 text-decoration-none shadow fadeUp">
+    <div class="card-body">
+      <div class="d-flex mb-2">
+        <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
+        <div class="area-box ms-2"><%= post.prefecture.name %></div>
+        <div class="area-box ms-2"><%= post.city.name %></div>
+        <div class="ms-auto"><%= link_to "詳細", post_path(post.id) %></div>
+      </div>
+      <p class="mb-0"><%= post.content %></p>
+      <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
     </div>
-    <p class="mb-0"><%= post.content %></p>
-    <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
   </div>
-</div>
 <% end %>

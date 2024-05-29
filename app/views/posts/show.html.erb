@@ -11,7 +11,7 @@
                 <li class="list-inline-item area-box"><%= @post.city.name %></li>
               </ul>
             </div>
-            <div class="container mb-5">
+            <div class="container mb-3">
               <div class="row justify-content-center">
                 <div class="col-11">
                   <h5><%= @post.content %></h5>
@@ -28,7 +28,11 @@
             <small><%= l @post.created_at %></small>
           </div>
 
-          <%= render 'comments/form' %>
+          <div id="map" style="height: 500px; width: 100%;"></div>
+
+          <div class="mt-4">
+            <%= render 'comments/form' %>
+          </div>
 
           <%= render 'comments/comments' %>
         </div>
@@ -36,3 +40,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  function initMap() {
+    var location = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: location
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEDi5xBD74q_oe-XQhIWtCp53ViQFVsP0&callback=initMap" async defer></script>
