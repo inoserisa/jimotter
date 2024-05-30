@@ -78,3 +78,5 @@ gem 'devise-i18n-views'
 gem 'devise-bootstrap5'
 
 gem 'ransack'
+
+gem 'rest-client'
