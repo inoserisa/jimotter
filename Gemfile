@@ -80,7 +80,3 @@ gem 'devise-bootstrap5'
 gem 'ransack'
 
 gem 'rest-client'
-
-gem 'geocoder'
-
-gem 'gmaps4rails'
