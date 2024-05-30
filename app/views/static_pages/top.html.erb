@@ -6,13 +6,13 @@
   </head>
 <body>
   <div class="container flex-column align-items-center justify-content-center" style="min-height: 10vh;">
-    <h1 class="mb-0 mt-5 text-center custom-title">知ってる地域のあるあるを</h1>
-    <h1 class="text-center custom-title">投稿しよう</h1>
+    <h1 class="mb-0 mt-5 text-center custom-title">私の地元、</h1>
+    <h1 class="text-center custom-title">知名度低すぎ・・・！？</h1>
     <div class="d-flex justify-content-center">
       <% if user_signed_in? %>
-          <%= link_to "投稿", new_post_path, class: "btn btn-danger rounded-pill mt-2 post-button", data: { turbo: false } %>
+          <%= link_to "アピールしよう", new_post_path, class: "btn btn-danger rounded-pill mt-2 post-button", data: { turbo: false } %>
       <% else %>
-        <%= link_to "ログインして投稿", new_user_session_path, class: "btn btn-danger rounded-pill mt-2 post-button" %>
+        <%= link_to "ログインしてアピールする", new_user_session_path, class: "btn btn-danger rounded-pill mt-2 post-button" %>
       <% end %>
     </div>
 
@@ -37,7 +37,7 @@
                 <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
                 <div class="area-box ms-2"><%= post.prefecture.name %></div>
                 <div class="area-box ms-2"><%= post.city.name %></div>
-                <div class="ms-auto"><%= link_to "詳細", post_path(post.id), data: { turbo: false} %></div>
+                <div class="ms-auto"><%= link_to "詳細", post_path(post.id), data: { turbo: false } %></div>
               </div>
               <p class="mb-0"><%= post.content %></p>
               <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
