@@ -48,9 +48,11 @@
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3Jqa_kk73ICNwFbTSD1OprtSeWv2G5ek&callback=initMap&v=weekly&libraries=marker" defer></script>
 
           <div class="mt-4">
-            <%= render 'comments/form' %>
+            <%= render 'comments/form', comment: @comment, post: @post %>
           </div>
-          <%= render 'comments/comments' %>
+          <div id="comments">
+            <%= render @comments %>
+          </div>
         </div>
       </article>
     </div>
