@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: "static_pages#top"
 
   resources :posts do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :cities, only: [:index]

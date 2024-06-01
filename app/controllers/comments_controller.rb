@@ -1,20 +1,19 @@
 class CommentsController < ApplicationController
-
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
-    @comment.user = current_user
+    @comment = current_user.comments.build(comment_params)
+    @comment.post = Post.find(params[:post_id])
+    @comment.save
+  end
 
-    if @comment.save
-      redirect_to post_path(@post), notice: 'コメントが追加されました'
-    else
-      redirect_to post_path(@post), alert: 'コメントに失敗しました'
-    end
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy!
   end
 
   private
 
+
   def comment_params
-    params.require(:comment).permit(:comment_content)
+    params.require(:comment).permit(:comment_content).merge(post_id: params[:post_id])
   end
 end
