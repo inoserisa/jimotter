@@ -1,4 +1,5 @@
 <%= form_with model: @post, local:true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <div class="mb-3">
       <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "都道府県を選択" }, { class: "form-select" } %>

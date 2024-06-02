@@ -28,7 +28,7 @@
                 fetch(`/cities.json?prefecture_id=${prefectureId}`)
                   .then(response => response.json())
                   .then(data => {
-                    citySelect.innerHTML = '<option value="">選択してください</option>';
+                    citySelect.innerHTML = '<option value="">市区町村</option>';
                     data.forEach(function(city) {
                       var option = document.createElement('option');
                       option.value = city.id;
@@ -42,7 +42,7 @@
                   })
                   .catch(error => console.error('Error:', error));
               } else {
-                citySelect.innerHTML = '<option value="">選択してください</option>';
+                citySelect.innerHTML = '<option value="">市区町村</option>';
               }
             }
         

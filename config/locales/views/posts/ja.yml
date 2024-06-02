@@ -1,0 +1,15 @@
+ja:
+  posts:
+    index:
+      title: '投稿一覧'
+    new:
+      title: '新規投稿'
+    create:
+      success: '投稿しました'
+      failed: '投稿に失敗しました'
+    show:
+      title: '投稿詳細'
+    edit:
+      title:
+    destroy:
+      success: '削除しました'

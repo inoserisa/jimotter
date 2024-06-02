@@ -11,10 +11,12 @@
                 <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
                 <div class="area-box ms-2"><%= post.prefecture.name %></div>
                 <div class="area-box ms-2"><%= post.city.name %></div>
-                <small class="ms-2"><%= l post.created_at %></small>
-                <div class="ms-auto"><%= link_to "詳細", post_path(post) %></div>
+                <div class="ms-auto"><%= link_to "詳細", post_path(post), data: { turbo: false } %></div>
               </div>
               <p class="mb-0"><%= post.content %></p>
+              <div class="d-flex">
+                <small class="ms-2 ms-auto"><%= l post.created_at %></small>
+              </div>
             </div>
           </div>
         <% end %>
