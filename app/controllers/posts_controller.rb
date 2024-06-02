@@ -21,9 +21,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to root_path
+      redirect_to @post, notice: t('.success')
     else
-      flash[:alert]
+      flash.now[:alert] = t('.failed')
       render :new, status: :unprocessable_entity
     end
   end
@@ -37,8 +37,9 @@ class PostsController < ApplicationController
   def edit; end
 
   def destroy
-    @post.destroy
-    redirect_to root_path, status: :see_other  
+    @post = current_user.posts.find(params[:id])
+    @post.destroy!
+    redirect_to root_path, status: :see_other, notice: t('.success')
   end
 
   private

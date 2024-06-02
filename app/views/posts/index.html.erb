@@ -11,6 +11,12 @@
           <h4>
             <%= @prefecture.name %> <%= @city.name %> の結果 <%= @count %> 件
           </h4>
+        <% else %>
+          <% if @prefecture.present? %>
+            <h4>
+              <%= @prefecture.name %> の結果 <%= @count %> 件
+            </h4>
+          <% end %>
         <% end %>
       </div>
       <%= render 'post' %>
