@@ -1,52 +1,48 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>jimotter APP</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-  </head>
-<body>
-  <div class="container flex-column align-items-center justify-content-center" style="min-height: 10vh;">
-    <h1 class="mb-0 mt-5 text-center custom-title">私の地元、</h1>
-    <h1 class="text-center custom-title">知名度低すぎ・・・！？</h1>
-    <div class="d-flex justify-content-center">
-      <% if user_signed_in? %>
-          <%= link_to "アピールしよう", new_post_path, class: "btn btn-danger rounded-pill mt-2 post-button", data: { turbo: false } %>
-      <% else %>
-        <%= link_to "ログインしてアピールする", new_user_session_path, class: "btn btn-danger rounded-pill mt-2 post-button" %>
-      <% end %>
-    </div>
+<div class="container flex-column align-items-center justify-content-center" style="min-height: 10vh;">
+  <h1 class="mb-0 mt-5 text-center custom-title">私の地元、</h1>
+  <h1 class="text-center custom-title">知名度低すぎ・・・！？</h1>
+  <div class="d-flex justify-content-center">
+    <% if user_signed_in? %>
+        <%= link_to "あるあるでアピールしよう", new_post_path, class: "btn btn-danger rounded-pill mt-2 post-button", data: { turbo: false } %>
+    <% else %>
+      <%= link_to "ログインしてアピールする", new_user_session_path, class: "btn btn-danger rounded-pill mt-2 post-button" %>
+    <% end %>
+  </div>
 
-    <div class="d-flex justify-content-center">
-      <div class="mt-5">
-        <h3 class="text-center">地域で検索</h3>
-        <h6 class="text-center">都道府県のみでも検索できます</h6>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <div class="mt-3">
-        <%= render 'posts/searchform', q: @q %>
-      </div>
-    </div>
-
-    <div class="container mt-5 justify-content-center">
-      <div class="row">
-        <h6>新着投稿</h6>
-        <% @posts.each do |post| %>
-          <div class="col-12 card mb-3 text-decoration-none shadow fadeUp">
-            <div class="card-body">
-              <div class="d-flex mb-2">
-                <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
-                <div class="area-box ms-2"><%= post.prefecture.name %></div>
-                <div class="area-box ms-2"><%= post.city.name %></div>
-                <div class="ms-auto"><%= link_to "詳細", post_path(post.id), data: { turbo: false } %></div>
-              </div>
-              <p class="mb-0"><%= post.content %></p>
-              <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
-            </div>
-          </div>
-        <% end %>
-      </div>
+  <div class="d-flex justify-content-center">
+    <div class="mt-5">
+      <h3 class="text-center">地域で検索</h3>
+      <h6 class="text-center">都道府県のみでも検索できます</h6>
     </div>
   </div>
-</body>
-</html>
+  <div class="d-flex justify-content-center">
+    <div class="mt-3">
+      <%= render 'posts/searchform', q: @q %>
+    </div>
+  </div>
+
+  <div class="container mt-5 justify-content-center">
+    <div class="row">
+      <div class="d-flex">
+        <h6>新着投稿</h6>
+        <%= link_to posts_path, class: "ms-auto link-dark" do %>
+          <h6>もっと見る</h6>
+        <% end %>
+      </div>
+      <% @posts.each do |post| %>
+        <div class="col-12 card mb-3 text-decoration-none shadow fadeUp">
+          <div class="card-body">
+            <div class="d-flex mb-2">
+              <%= link_to post.user.name, user_path(post.user), class: "link-dark name-link" %>
+              <div class="area-box ms-2"><%= post.prefecture.name %></div>
+              <div class="area-box ms-2"><%= post.city.name %></div>
+              <div class="ms-auto"><%= link_to "詳細", post_path(post.id), data: { turbo: false } %></div>
+            </div>
+            <p class="mb-0"><%= post.content %></p>
+            <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -87,6 +87,11 @@ users ||--o{ authenticates:""
 users ||--o{ notifications:""
 posts ||--o{ notifications:""
 comments ||--o{ notifications:""
+users ||--o{ questions: ""
+users ||--o{ answers: ""
+questions ||--o{ answers: ""
+answers }o--|| prefectures: ""
+answers }o--|| cities: ""
 
 users {
 integer id PK
@@ -145,5 +150,20 @@ integer post_id FK
 integer comment_id FK
 string action
 boolean checked
+}
+
+questions{
+  integer id PK
+  integer user_id FK
+  text content
+}
+
+answers{
+  integer id PK
+  integer user_id FK
+  integer question_id FK
+  integer prefecture_id FK
+  integer city_id FK
+  text content
 }
 ```
