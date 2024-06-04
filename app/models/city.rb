@@ -1,6 +1,7 @@
 class City < ApplicationRecord
   belongs_to :prefecture
   has_many :posts
+  has_many :answers
 
   validates :name, presence: true
 

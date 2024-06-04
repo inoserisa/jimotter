@@ -6,6 +6,7 @@ body {
 .custom-title {
   color: #146356;
   font-weight: bold;
+  margin-top: 20%;
 }
 
 .header-color {
@@ -27,7 +28,7 @@ body {
 }
 
 .post-button {
-  width: 60%;
+  width: auto;
   font-size: 25px;
 }
 
@@ -61,6 +62,10 @@ body {
     width: 80%;
     font-size: 20px;
   }
+  .custom-title {
+    margin-top: 15%;
+    font-size: 40px;
+  }
 }
 
 .fadeUp {
@@ -73,12 +78,12 @@ body {
 @keyframes fadeUpAnime{
   from {
     opacity: 0;
-  transform: translateY(100px);
+    transform: translateY(100px);
   }
 
   to {
     opacity: 1;
-  transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
