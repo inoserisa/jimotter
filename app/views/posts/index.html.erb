@@ -20,6 +20,9 @@
         <% end %>
       </div>
       <%= render 'post' %>
+      <div class="d-flex justify-content-center">
+        <%= paginate @posts, theme: 'bootstrap-5' %>
+      </div>
     </div>
   </div>
 </div>

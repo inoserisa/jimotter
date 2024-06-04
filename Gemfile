@@ -80,3 +80,7 @@ gem 'devise-bootstrap5'
 gem 'ransack'
 
 gem 'rest-client'
+
+gem 'kaminari'
+
+gem 'bootstrap5-kaminari-views'
