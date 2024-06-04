@@ -15,5 +15,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
+  resources :questions do
+    resources :answers, only: [:create, :destroy]
+  end
+
   resources :cities, only: [:index]
 end

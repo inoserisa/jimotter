@@ -1,0 +1,51 @@
+<div id="answer-form">
+  <%= form_with model: [@question, @answer], local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-group">
+      <div class="d-flex">
+        <div class="mb-3 w-50 px-3">
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "都道府県を選択" }, { class: "form-select" } %>
+        </div>
+        <div class="mb-3 w-50 px-3 ms-auto">
+          <%= f.collection_select :city_id, [], :id, :name, { prompt: "市区町村を選択" }, { class: "form-select" } %>
+        </div>
+      </div>
+      <div class="mb-3 px-3">
+        <%= f.text_area :content, class: 'form-control', rows:3 %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= f.submit "回答", class: "btn postcreate-button mt-3 mb-5 text-light w-50" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+document.addEventListener("turbo:load", function() {
+  var prefectureSelect = document.querySelector('select[name="answer[prefecture_id]"]');
+  var citySelect = document.querySelector('select[name="answer[city_id]"]');
+
+  if (prefectureSelect && citySelect) {
+    prefectureSelect.addEventListener("change", function() {
+      var prefectureId = this.value;
+
+      if (prefectureId) {
+        fetch(`/cities.json?prefecture_id=${prefectureId}`)
+          .then(response => response.json())
+          .then(data => {
+            citySelect.innerHTML = '<option value="">市区町村を選択</option>';
+            data.forEach(function(city) {
+              var option = document.createElement('option');
+              option.value = city.id;
+              option.text = city.name;
+              citySelect.appendChild(option);
+            });
+          })
+          .catch(error => console.error('Error:', error));
+      } else {
+        citySelectHTML = '<option value="">市区町村を選択</option>';
+      }
+    });
+  }
+});
+</script>
