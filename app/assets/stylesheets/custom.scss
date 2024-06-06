@@ -1,25 +1,66 @@
 body {
   background-color: #FFF6ED;
   padding-top: 56px;
+  background-image: url("background-image.png");
+  background-size: 60% auto;
+  background-position: 100% 20%;
+  background-repeat: no-repeat;
 }
 
-.custom-title {
-  color: #146356;
-  font-weight: bold;
-  margin-top: 20%;
-}
-
-.header-color {
-  background-color: #A3DA8D;
-}
+// footer {
+//   background-image: url("footer-image.png");
+//   background-repeat: no-repeat;
+//   background-size: 300px auto;
+//   background-position: center 60%;
+// }
 
 .footer-color {
-  background-color:#146356;
+  background: #43cea2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #43cea2, #185a9d);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #43cea2, #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position:sticky;
 }
 
+.custom-title-top, .custom-title-under {
+  color: #185a9d;
+  font-weight: bold;
+  font-size: 55px;
+}
+
+.custom-title-top {
+  margin-top: 15%;
+}
+
+.custom-title-top span, .custom-title-under span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.post-button {
+  width: 400px;
+  font-size: 25px;
+  font-weight: bold;
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
+  border-color:#FFF;
+}
+
+.search-title {
+  background-color: rgba(255,255,255,0.7);
+  color:#185a9d;
+}
+
+.header-color {
+  background-image: linear-gradient(90deg, #43cea2, #185a9d);
+}
+
+.footer-list {
+  margin-bottom: 60px;
+}
+
 .area-box {
-  background-color: #146356;
+  background-color: #185a9d;
   color: white;
   border-radius: 5px;
   font-size: small;
@@ -27,17 +68,9 @@ body {
   font-weight: bold;
 }
 
-.post-button {
-  width: auto;
-  font-size: 25px;
-}
-
 .postcreate-button {
-  background-color: #146356;
-}
-
-.postcreate-button:hover {
-  background-color: #115549;
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
+  border-color:#FFF;
 }
 
 .name-link {
@@ -49,7 +82,8 @@ body {
 }
 
 .search-button {
-  background-color: #146356;
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
+  border-color:#FFF;
   font-weight: bold;
 }
 
@@ -57,14 +91,50 @@ body {
   background-color: #115549;
 }
 
-@media(max-width: 767px) {
-  .post-button {
-    width: 80%;
-    font-size: 20px;
+.prefecture-box {
+  width: 300px;
+}
+
+.city-box {
+  width: 300px;
+}
+
+@media(max-width: 992px) {
+  .custom-title-top {
+    font-size: 50px;
   }
-  .custom-title {
-    margin-top: 15%;
+  .custom-title-under {
+    font-size: 50px;
+  }
+  footer {
+    background-position: center 70%;
+  }
+}
+
+@media(max-width: 767px) {
+  body {
+    background-size: 100% auto;
+    background-position: 100% 15%;
+  }
+  footer {
+    background-position: center 80%;
+  }
+  .post-button {
+    font-size: 25px;
+    width: 350px;
+  }
+  .custom-title-top {
+    margin-top: 20%;
     font-size: 40px;
+  }
+  .custom-title-under {
+    font-size: 40px;
+  }
+  .prefecture-box {
+    width: 100%;
+  }
+  .city-box {
+    width: 100%;
   }
 }
 
@@ -73,6 +143,18 @@ body {
   animation-duration:1s;/*アニメーション変化時間 ※デフォルト*/
   animation-fill-mode:forwards;/*アニメーションの開始と終了時の状態を指定*/
   opacity:0;
+}
+
+.custom-title-top span::before, .custom-title-under span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* アニメーションの開始位置 */
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  animation: slideBackground 1s linear forwards; /* アニメーションの設定 */
+  z-index: -1;
 }
 
 @keyframes fadeUpAnime{
@@ -84,6 +166,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideBackground {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
   }
 }
 
