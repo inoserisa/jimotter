@@ -1,4 +1,4 @@
-<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 10vh;">
+<div class="container d-flex flex-column justify-content-center" style="min-height: 10vh;">
   <div class="row">
     <div class="jumbotron jumbotron-fluid col-12">
       <div class="col-lg-7 col-md-7">
@@ -33,26 +33,53 @@
     </div>
 
     <div class="col-sm-12">
-      <div class="d-flex">
-        <h6>新着投稿</h6>
-        <%= link_to posts_path, class: "ms-auto link-dark", data: { turbo: false } do %>
-          <h6>もっと見る</h6>
-        <% end %>
-      </div>
-      <% @posts.each do |post| %>
-        <div class="card mb-3 text-decoration-none shadow fadeUp">
-          <div class="card-body ps-4">
-            <div class="d-flex mb-2">
-              <%= link_to post.user.name, user_path(post.user), class: "link-dark name-link" %>
-              <div class="area-box ms-2"><%= post.prefecture.name %></div>
-              <div class="area-box ms-2"><%= post.city.name %></div>
-              <div class="ms-auto"><%= link_to "詳細", post_path(post.id), data: { turbo: false } %></div>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="post-tab" data-bs-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="true">新着投稿</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="question-tab" data-bs-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">新着質問</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+          <% @posts.each do |post| %>
+            <div class="card mb-3 text-decoration-none shadow fadeUp">
+              <div class="card-body ps-4">
+                <div class="d-flex mb-2">
+                  <%= link_to post.user.name, user_path(post.user), class: "link-dark name-link" %>
+                  <div class="area-box ms-2"><%= post.prefecture.name %></div>
+                  <div class="area-box ms-2"><%= post.city.name %></div>
+                  <div class="ms-auto"><%= link_to "詳細", post_path(post.id), data: { turbo: false } %></div>
+                </div>
+                <p class="mb-0"><%= post.content %></p>
+                <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
+              </div>
             </div>
-            <p class="mb-0"><%= post.content %></p>
-            <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
-          </div>
+          <% end %>
+          <%= link_to posts_path, class: "text-center ms-auto text-decoration-none", data: { turbo: false } do %>
+            <h6 class="fadeUp">もっと見る</h6>
+          <% end %>
         </div>
-      <% end %>
+        <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+          <% @questions.each do |question| %>
+            <div class="card mb-3 text-decoration-none shadow fadeUp">
+              <div class="card-body ps-4">
+                <div class="d-flex mb-2">
+                  <%= link_to question.user.name, user_path(question.user), class: "link-dark name-link ms-2" %>
+                  <div class="ms-auto"><%= link_to "詳細", question_path(question.id), data: { turbo: false } %></div>
+                </div>
+                <p class="mb-0"><%= question.content %></p>
+                <small class="mb-0 d-flex flex-row-reverse"><%= l question.created_at %></small>
+              </div>
+            </div>
+          <% end %>
+          <%= link_to questions_path, class: "text-center ms-auto text-decoration-none", data: { turbo: false } do %>
+            <h6 class="fadeUp">もっと見る</h6>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
