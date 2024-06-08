@@ -5,14 +5,8 @@ body {
   background-size: 60% auto;
   background-position: 100% 20%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
-// footer {
-//   background-image: url("footer-image.png");
-//   background-repeat: no-repeat;
-//   background-size: 300px auto;
-//   background-position: center 60%;
-// }
 
 .footer-color {
   background: #43cea2;  /* fallback for old browsers */
@@ -38,6 +32,18 @@ body {
   z-index: 1;
 }
 
+.custom-title-top span::before, .custom-title-under span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* アニメーションの開始位置 */
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  animation: slideBackground 1s linear forwards; /* アニメーションの設定 */
+  z-index: -1;
+}
+
 .post-button {
   width: 400px;
   font-size: 25px;
@@ -56,7 +62,7 @@ body {
 }
 
 .footer-list {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 
 .area-box {
@@ -79,6 +85,11 @@ body {
 
 .comment-border {
   border-color:gray;
+}
+
+.comment-button {
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
+  border-color: #FFF;
 }
 
 .search-button {
@@ -106,18 +117,12 @@ body {
   .custom-title-under {
     font-size: 50px;
   }
-  footer {
-    background-position: center 70%;
-  }
 }
 
 @media(max-width: 767px) {
   body {
     background-size: 100% auto;
     background-position: 100% 15%;
-  }
-  footer {
-    background-position: center 80%;
   }
   .post-button {
     font-size: 25px;
@@ -136,6 +141,9 @@ body {
   .city-box {
     width: 100%;
   }
+  .custom-title-top span::before, .custom-title-under span::before {
+    background: rgba(255, 255, 255, 0.7);
+  }
 }
 
 .fadeUp {
@@ -143,18 +151,6 @@ body {
   animation-duration:1s;/*アニメーション変化時間 ※デフォルト*/
   animation-fill-mode:forwards;/*アニメーションの開始と終了時の状態を指定*/
   opacity:0;
-}
-
-.custom-title-top span::before, .custom-title-under span::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%; /* アニメーションの開始位置 */
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  animation: slideBackground 1s linear forwards; /* アニメーションの設定 */
-  z-index: -1;
 }
 
 @keyframes fadeUpAnime{
@@ -188,5 +184,5 @@ body {
 }
 
 .pagination>.active>a {     
-  background: #A3DA8D;
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
 }

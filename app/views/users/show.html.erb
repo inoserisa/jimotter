@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-      <div class="col-12 card shadow">
+      <div class="col-12 card shadow mb-5">
         <div class="card-body">
           <div class="mypage-container mt-3">
             <h6>ユーザー名：<%= @user.name %></h6>
@@ -9,26 +9,46 @@
         </div>
       </div>
 
-      <h6 class="text-center mt-5">投稿一覧</h6>
-      <% if @posts.present? %>
-        <% @posts.each do |post| %>
-          <div class="col-12 card mb-3 text-decoration-none shadow">
-            <div class="card-body">
-              <div class="d-flex mb-2">
-                <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
-                <div class="area-box ms-2"><%= post.prefecture.name %></div>
-                <div class="area-box ms-2"><%= post.city.name %></div>
-                <div class="ms-auto"><%= link_to "詳細", post_path(post), data: { turbo: false } %></div>
+      <div class="col-sm-12">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="post-tab" data-bs-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="true">投稿一覧</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="question-tab" data-bs-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">質問一覧</a>
+          </li>
+        </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+          <% if @posts.present? %>
+            <% @posts.each do |post| %>
+              <div class="col-12 card mb-3 text-decoration-none shadow">
+                <div class="card-body">
+                  <div class="d-flex mb-2">
+                    <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none link-dark name-link" %>
+                    <div class="area-box ms-2"><%= post.prefecture.name %></div>
+                    <div class="area-box ms-2"><%= post.city.name %></div>
+                    <div class="ms-auto"><%= link_to "詳細", post_path(post), data: { turbo: false } %></div>
+                  </div>
+                  <p class="mb-0"><%= post.content %></p>
+                  <div class="d-flex">
+                  <small class="ms-2 ms-auto"><%= l post.created_at %></small>
+                </div>
+                </div>
               </div>
-              <p class="mb-0"><%= post.content %></p>
-              <div class="d-flex">
-                <small class="ms-2 ms-auto"><%= l post.created_at %></small>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="text-center">投稿はありません。</p>
-      <% end %>
+            <% end %>
+          <% else %>
+            <p class="text-center mt-5">まだ投稿はありません。</p>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+          <% if @questions.present? %>
+            <%= render 'questions/question', questions: @questions %>
+          <% else %>
+            <p class="text-center mt-5">まだ質問はありません。</p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+</div>
