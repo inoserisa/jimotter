@@ -63,18 +63,7 @@
           <% end %>
         </div>
         <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
-          <% @questions.each do |question| %>
-            <div class="card mb-3 text-decoration-none shadow fadeUp">
-              <div class="card-body ps-4">
-                <div class="d-flex mb-2">
-                  <%= link_to question.user.name, user_path(question.user), class: "link-dark name-link ms-2" %>
-                  <div class="ms-auto"><%= link_to "詳細", question_path(question.id), data: { turbo: false } %></div>
-                </div>
-                <p class="mb-0"><%= question.content %></p>
-                <small class="mb-0 d-flex flex-row-reverse"><%= l question.created_at %></small>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'questions/question', questions: @questions %>
           <%= link_to questions_path, class: "text-center ms-auto text-decoration-none", data: { turbo: false } do %>
             <h6 class="fadeUp">もっと見る</h6>
           <% end %>

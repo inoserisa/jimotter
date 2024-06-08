@@ -43,19 +43,7 @@
         </div>
         <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
           <% if @questions.present? %>
-            <% @questions.each do |question| %>
-              <div class="card mb-3 text-decoration-none shadow">
-                <div class="card-body ps-4">
-                  <div class="d-flex mb-2">
-                    <%= link_to question.user.name, user_path(question.user), class: "link-dark name-link" %>
-                    <div class="ms-auto"><%= link_to "詳細", question_path(question.id), data: { turbo: false } %></div>
-                  </div>
-                  <p class="mb-0"><%= question.content %></p>
-                  <small class="mb-0 d-flex flex-row-reverse"><%= l question.created_at %></small>
-                </div>
-              </div>
-            <% end %>
-            <%= paginate @questions, theme: 'bootstrap-5' %>
+            <%= render 'questions/question', questions: @questions %>
           <% else %>
             <p class="text-center mt-5">まだ質問はありません。</p>
           <% end %>
