@@ -3,7 +3,7 @@
     <p class="mt-2 mb-1 px-3"><%= comment.user.name %></p>
     <p class="mb-1 px-3"><%= comment.comment_content %></p>
     <div class="d-flex">
-      <% if current_user.own?(comment) %>
+      <% if current_user && current_user.own?(comment) %>
         <%= link_to post_comment_path(comment.post, comment), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "ms-auto px-3" do %>
           <i class="bi bi-trash-fill"></i>
         <% end %>
