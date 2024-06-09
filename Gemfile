@@ -50,6 +50,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  gem "letter_opener_web"
 end
 
 group :development do
@@ -84,3 +86,5 @@ gem 'rest-client'
 gem 'kaminari'
 
 gem 'bootstrap5-kaminari-views'
+
+gem 'dotenv-rails'

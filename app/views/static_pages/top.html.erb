@@ -2,7 +2,7 @@
   <div class="row">
     <div class="jumbotron jumbotron-fluid col-12">
       <div class="col-lg-7 col-md-7">
-        <div class="text-center custom-title-top"><span>私の地元、</span></div>
+        <div class="text-center custom-title-top"><span>わたしのじもと、</span></div>
         <div class="text-center custom-title-under mb-4"><span>知名度低すぎ…!?</span></div>
         <div class="d-flex justify-content-center">
           <% if user_signed_in? %>
@@ -15,7 +15,7 @@
                 </div>
               </div>
           <% else %>
-            <%= link_to "ログインしてアピールする", new_user_session_path, class: "btn btn-danger rounded-pill mt-2 post-button" %>
+            <%= link_to "ログインしてアピールする", new_user_session_path, class: "btn btn-primary rounded-pill mt-2 mb-3 post-button" %>
           <% end %>
         </div>
       </div>

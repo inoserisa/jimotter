@@ -18,7 +18,7 @@
             </div>
           </div>
             <div class="d-flex flex-row-reverse border-top border-dark mt-5 pt-3">
-              <% if current_user.own?(@question) %>
+              <% if current_user && current_user.own?(@question) %>
                 <%= link_to post_path(@question), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
                   <i class="bi bi-trash-fill"></i>
                 <% end %>
