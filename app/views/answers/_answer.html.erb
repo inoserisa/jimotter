@@ -1,4 +1,4 @@
-<% @question.answers.each do |answer| %>
+<div id="answer-<%= answer.id %>">
   <div class="border mb-2">
     <div class="d-flex mb-2">
       <%= link_to answer.user&.name, user_path(answer.user), class: "link-dark name-link mt-3 mb-1 px-4" %>
@@ -7,7 +7,7 @@
     </div>
     <p class="mb-1 px-4"><%= answer.content %></p>
     <div class="d-flex">
-    <% if current_user.own?(answer) %>
+    <% if current_user && current_user.own?(answer) %>
       <%= link_to question_answer_path(answer.question, answer), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class:"ms-auto px-3" do %>
         <i class="bi bi-trash-fill"></i>
       <% end %>
@@ -17,4 +17,4 @@
       <small class="mb-2 px-3 ms-auto"><%= l answer.created_at %></small>
     </div>
   </div>
-<% end %>
+</div>
