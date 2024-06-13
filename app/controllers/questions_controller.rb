@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
-    @answers = @question.answers.includes(:user, :prefecture_id, :city_id).order(created_at: :desc)
+    @answers = @question.answers.includes(:user, :prefecture, :city).order(created_at: :desc)
   end
 
   private

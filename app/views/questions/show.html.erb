@@ -31,7 +31,9 @@
           <div class="mt-3">
             <%= render 'answers/form', question: @question, answer: @answer %>
           </div>
-            <%= render @question.answers  %>
+          <% @answers.each do |answer| %>
+            <%= render 'answers/answer', answer: answer  %>
+          <% end %>
         </div>
       </article>
     </div>
