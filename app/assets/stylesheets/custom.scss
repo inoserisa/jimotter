@@ -3,7 +3,7 @@ body {
   padding-top: 56px;
   background-image: url("background-image.png");
   background-size: 60% auto;
-  background-position: 100% 20%;
+  background-position: 100% 25%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -18,7 +18,7 @@ body {
 .custom-title-top, .custom-title-under {
   color: #185a9d;
   font-weight: bold;
-  font-size: 55px;
+  font-size: 48px;
 }
 
 .custom-title-top {
@@ -42,6 +42,13 @@ body {
   background: rgba(255, 255, 255, 0.9);
   animation: slideBackground 1s linear forwards; /* アニメーションの設定 */
   z-index: -1;
+}
+
+.title-text>h6 {
+  color:#185a9d;
+  line-height: 1.8em;
+  text-shadow: 0px 0px 7px #FFF, 0px 0px 7px #FFF, 0px 0px 7px #FFF, 0px 0px 7px #FFF;
+  font-weight: bold;
 }
 
 .post-button {
@@ -111,25 +118,28 @@ body {
 }
 
 @media(max-width: 992px) {
+  body {
+    background-position: 100% 15%;
+  }
   .custom-title-top {
-    font-size: 50px;
+    font-size: 45px;
   }
   .custom-title-under {
-    font-size: 50px;
+    font-size: 45px;
   }
 }
 
 @media(max-width: 767px) {
   body {
     background-size: 100% auto;
-    background-position: 100% 15%;
+    background-position: 100% 12%;
   }
   .post-button {
     font-size: 25px;
     width: 350px;
   }
   .custom-title-top {
-    margin-top: 20%;
+    margin-top: 15%;
     font-size: 40px;
   }
   .custom-title-under {
@@ -190,4 +200,12 @@ body {
 .icon {
   margin-right: 10px;
   vertical-align: middle;
+}
+
+.about-title {
+  color:#115549;
+  font-weight: bold;
+}
+.about-caution {
+  color:#8e8e8e;
 }

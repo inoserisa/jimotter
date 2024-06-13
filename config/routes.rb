@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   root to: "static_pages#top"
 
+  get 'about', to: 'static_pages#about'
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
