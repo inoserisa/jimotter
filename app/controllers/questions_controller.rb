@@ -22,6 +22,12 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.includes(:user, :prefecture, :city).order(created_at: :desc)
   end
 
+  def destroy
+    @question = current_user.questions.find(params[:id])
+    @question.destroy!
+    redirect_to root_path, status: :see_other, notice: t('.success')
+  end
+
   private
 
   def question_params
