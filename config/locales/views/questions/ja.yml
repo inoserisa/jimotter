@@ -3,3 +3,5 @@ ja:
     new:
       title: 質問投稿
       content: 質問内容
+    destroy:
+      success: "質問を削除しました"
