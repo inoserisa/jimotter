@@ -5,6 +5,9 @@
         <div class="card-body">
           <div class="mypage-container mt-3">
             <h6>ユーザー名：<%= @user.name %></h6>
+            <% if current_user && current_user.own?(@user) %>
+              <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+            <% end %>
           </div>
         </div>
       </div>
