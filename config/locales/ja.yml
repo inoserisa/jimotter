@@ -8,6 +8,8 @@ ja:
         prefecture: 都道府県
         city: 市区町村
         content: 本文
+      question:
+        content: 質問内容
     errors:
       messages:
         blank: "を入力してください"
