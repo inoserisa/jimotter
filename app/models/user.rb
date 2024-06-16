@@ -12,6 +12,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   def own?(object)
-    id == object&.user_id
+    if object.is_a?(User)
+      id == object.id
+    else
+      id == object&.user_id
+    end
   end
 end
