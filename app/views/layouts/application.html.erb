@@ -3,15 +3,11 @@
   <head>
     <title>jimotter-地域あるある投稿アプリ-</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@inoserisa">
-    <meta name="twitter:title" content="jimotter">
-    <meta name="twitter:description" content="地域あるある投稿アプリであなたの地元をアピールしよう">
-    <meta name="twitter:image" content="<%= asset_url('sharecard.png') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
