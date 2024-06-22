@@ -28,36 +28,37 @@ X(旧Twitter)で投稿を共有できるようにして、導線を増やす。
 - 開発環境: Docker
 - サーバサイド: Ruby on Rails 7系
 <br>Ruby 3.2.2 Rails 7.1.3
-- フロントエンド: HotWire
+- フロントエンド: HotWire, JavaScript
 - CSSフレームワーク: bootstrap5系
-- WebAPI: [GeolocationAPI](https://developers.google.com/maps/documentation/geolocation/overview?hl=ja)、[都道府県一覧API](https://opendata.resas-portal.go.jp/docs/api/v1/prefectures.html)、[市区町村一覧API](https://opendata.resas-portal.go.jp/docs/api/v1/cities.html)
+- WebAPI: [GeolocationAPI](https://developers.google.com/maps/documentation/geolocation/overview?hl=ja)、[JavaScriptAPI](https://developers.google.com/maps/documentation/javascript?hl=ja)
 #### インフラ:
 - Webアプリケーションサーバ: Heroku
-- データベースサーバ: PostgresSQL
+- データベースサーバ: MySQL(JawsDB)
 
 ## 機能候補
 #### MVPリリース
-- ユーザー登録
+- ユーザー登録(devise)
 - ログイン(devise)
 - マイページ
-- ユーザー情報の変更機能（ユーザー名、メールアドレス、パスワード、地域、アイコン）
+- ユーザー情報の変更機能（ユーザー名、メールアドレス）(devise)
+- パスワードリセットメール送信(devise)
 - あるあるの投稿機能、投稿の削除機能
 - 選択肢から都道府県・市区町村を指定して投稿する機能
 - 都道府県・市区町村を指定して検索(ransack)
 - トップ画面に新着一覧
 - 投稿にコメント(Ajax)
-- 画像アップデート(ActiveStorage)
 - 「このアプリについて」ページ
+- ページネーション機能(kaminari)
+- 共有ボタン(X等)
+- 静的OGP
+- 投稿詳細画面に投稿地域の地図表示
 #### 本リリース
 - adminユーザーの投稿管理
-- 位置情報で投稿地域指定(geolocation)
 - いいね（あるある！）ボタン(Ajax)
 - 通知機能
 - パンくずリスト(gretel)
 - シームレススクロール(Ajax)
-- ページネーション機能(kaminari)
 - 既存サービスでログイン
-- 共有ボタン(X等)
 - 退会機能
 
 ## 追加サービス案
