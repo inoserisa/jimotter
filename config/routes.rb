@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   root to: "static_pages#top"
 
   get 'about', to: 'static_pages#about'
+
+  delete 'destroy_user', to: 'static_pages#destroy_user'
 
   resources :posts do
     resources :comments, only: [:create, :destroy]

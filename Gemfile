@@ -90,3 +90,5 @@ gem 'bootstrap5-kaminari-views'
 gem 'dotenv-rails'
 
 gem 'meta-tags'
+
+gem 'paranoia'
