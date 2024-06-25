@@ -1,18 +1,30 @@
 <footer id='footer' class='footer-bottom mt-5 footer-color'>
   <div class='container py-3'>
     <ul class='nav row justify-content-between footer-list'>
-      <li class="nav-item col-lg-3 col-sm-6">
-        <%= link_to "退会", "#", class: "nav-link text-light text-center" %>
-      </li>
-      <li class="nav-item col-lg-3 col-sm-6">
-        <%= link_to "利用規約", "#", class: "nav-link text-light text-center" %>
-      </li>
-      <li class="nav-item col-lg-3 col-sm-6">
-        <%= link_to "プライバシポリシー", "#", class: "nav-link text-light text-center" %>
-      </li>
-      <li class="nav-item col-lg-3 col-sm-6">
-        <%= link_to "お問い合わせ", "#", class: "nav-link text-light text-center" %>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item col-lg-3 col-sm-6">
+          <%= link_to "退会", destroy_user_path, data: { turbo_method: :delete, turbo_confirm: '本当に退会しますか？' }, class: "nav-link text-light text-center" %>
+        </li>
+        <li class="nav-item col-lg-3 col-sm-6">
+          <%= link_to "利用規約", "#", class: "nav-link text-light text-center" %>
+        </li>
+        <li class="nav-item col-lg-3 col-sm-6">
+          <%= link_to "プライバシポリシー", "#", class: "nav-link text-light text-center" %>
+        </li>
+        <li class="nav-item col-lg-3 col-sm-6">
+          <%= link_to "お問い合わせ", "#", class: "nav-link text-light text-center" %>
+        </li>
+      <% else %>
+        <li class="nav-item col-lg-4 col-sm-6">
+          <%= link_to "利用規約", "#", class: "nav-link text-light text-center" %>
+        </li>
+        <li class="nav-item col-lg-4 col-sm-6">
+          <%= link_to "プライバシポリシー", "#", class: "nav-link text-light text-center" %>
+        </li>
+        <li class="nav-item col-lg-4 col-sm-12">
+          <%= link_to "お問い合わせ", "#", class: "nav-link text-light text-center" %>
+        </li>
+      <% end %>
     </ul>
     <div class="text-center text-light pt-5">
     © 2024 Jimotter
