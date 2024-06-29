@@ -26,7 +26,7 @@ class User < ApplicationRecord
   private
   
   def email_not_taken_by_deleted_user
-    if User.with_deleted.where(email: email).exists?
+    if User.with_deleted.where.not(id: self.id).where(email: email).exists?
       errors.add(:email, 'は使用不可です')
     end
   end
