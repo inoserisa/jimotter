@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   root to: "static_pages#top"
 
   get 'about', to: 'static_pages#about'
+  get 'cancel_membership', to: 'static_pages#cancel_membership'
 
   delete 'destroy_user', to: 'static_pages#destroy_user'
 

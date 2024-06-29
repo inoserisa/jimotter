@@ -7,6 +7,8 @@ class StaticPagesController < ApplicationController
 
   def about; end
 
+  def cancel_membership; end
+
   def destroy_user
     current_user.destroy
     redirect_to root_path, notice: '退会しました', status: :see_other
