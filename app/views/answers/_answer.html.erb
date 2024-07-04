@@ -6,16 +6,16 @@
       <div class="area-box mt-3 mx-2 mb-1"><%= answer.city.name %></div>
     </div>
     <p class="mb-1 px-4"><%= answer.content %></p>
+    <div class="d-flex">
+      <small class="mb-2 px-3 ms-auto"><%= l answer.created_at %></small>
+    </div>
     <div class="d-flex flex-row-reverse">
       <% if current_user && current_user.own?(answer) %>
         <%= link_to question_answer_path(answer.question, answer), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class:"px-3" do %>
           <i class="bi bi-trash-fill" style="vertical-align: middle;"></i>
         <% end %>
       <% end %>
-      <%= link_to image_tag("logo-black.png", size: "15x15", class:"icon"), "https://twitter.com/intent/tweet?text=#{ answer.question.content }%0a%0a【#{ ERB::Util.url_encode(answer.prefecture.name) }】【#{ ERB::Util.url_encode(answer.city.name) }】%0a#{ ERB::Util.url_encode(answer.content) }%0a%0a%23Jimotter%0a&url=#{ ERB::Util.url_encode(question_url(answer.question)) }", target: '_blank', rel: "noopener noreferrer" %>
-    </div>
-    <div class="d-flex">
-      <small class="mb-2 px-3 ms-auto"><%= l answer.created_at %></small>
+      <%= link_to image_tag("Xsharebutton.png", class:"icon mb-3"), "https://twitter.com/intent/tweet?text=#{ answer.question.content }%0a%0a【#{ ERB::Util.url_encode(answer.prefecture.name) }】【#{ ERB::Util.url_encode(answer.city.name) }】%0a#{ ERB::Util.url_encode(answer.content) }%0a%0a%23Jimotter%0a&url=#{ ERB::Util.url_encode(question_url(answer.question)) }", target: '_blank', rel: "noopener noreferrer" %>
     </div>
   </div>
 </div>
