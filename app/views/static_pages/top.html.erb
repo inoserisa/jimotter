@@ -50,20 +50,7 @@
 
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
-          <% @posts.each do |post| %>
-            <div class="card mb-3 text-decoration-none shadow">
-              <div class="card-body ps-4">
-                <div class="d-flex mb-2">
-                  <%= link_to post.user.name, user_path(post.user), class: "link-dark name-link" %>
-                  <div class="area-box ms-2"><%= post.prefecture.name %></div>
-                  <div class="area-box ms-2"><%= post.city.name %></div>
-                  <div class="ms-auto"><%= link_to "地図", post_path(post.id), data: { turbo: false } %></div>
-                </div>
-                <p class="mb-0"><%= post.content %></p>
-                <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
-              </div>
-            </div>
-          <% end %>
+          <%= render partial: 'posts/post', collection: @posts, as: :post %>
           <%= link_to posts_path, class: "text-center ms-auto text-decoration-none", data: { turbo: false } do %>
             <h6>もっと見る</h6>
           <% end %>

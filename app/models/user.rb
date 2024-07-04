@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,6 +23,18 @@ class User < ApplicationRecord
     else
       id == object&.user_id
     end
+  end
+
+  def bookmark(post)
+    bookmarks.create(post: post)
+  end
+
+  def unbookmark(post)
+    bookmarks.find_by(post: post)&.destroy
+  end
+
+  def bookmark?(post)
+    bookmark_posts.include?(post)
   end
 
   private
