@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc)
     @questions = @user.questions.order(created_at: :desc)
+    @bookmark_posts = @user.bookmark_posts.includes(:user).order(created_at: :desc)
   end
 
   def destroy

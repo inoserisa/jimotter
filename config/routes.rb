@@ -27,6 +27,9 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
+    collection do
+      get :bookmarks
+    end
   end
 
   resources :questions do
@@ -34,4 +37,6 @@ Rails.application.routes.draw do
   end
 
   resources :cities, only: [:index]
+
+  resources :bookmarks, only: [:create, :destroy]
 end

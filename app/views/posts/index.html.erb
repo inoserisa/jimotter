@@ -19,7 +19,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= render 'post' %>
+      <%= render partial: 'post', collection: @posts, as: :post %>
       <div class="d-flex justify-content-center">
         <%= paginate @posts, theme: 'bootstrap-5' %>
       </div>
