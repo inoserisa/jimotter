@@ -25,6 +25,8 @@
               <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
                 <i class="bi bi-trash-fill" style="vertical-align: middle;"></i>
               <% end %>
+            <% else %>
+              <div class="bookmark-star"><%= render 'bookmarks/bookmark_button', { post: @post } %></div>
             <% end %>
             <%= link_to image_tag("Xsharebutton.png", class:"icon"), "https://twitter.com/intent/tweet?text=【#{ ERB::Util.url_encode(@post.prefecture.name) }】【#{ ERB::Util.url_encode(@post.city.name) }】%0a#{ ERB::Util.url_encode(@post.content) }%0a%0a%23Jimotter%0a&url=#{ ERB::Util.url_encode(post_url(@post)) }", target: '_blank', rel: "noopener noreferrer" %>
           </div>
