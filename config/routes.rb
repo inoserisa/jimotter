@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   resources :cities, only: [:index]
 
   resources :bookmarks, only: [:create, :destroy]
+
+  resources :notifications, only: [:index]
 end
