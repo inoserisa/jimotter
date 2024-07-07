@@ -7,12 +7,24 @@
       <% if current_user %>
         <% if post.user_id != current_user.id %>
           <div class="ms-auto bookmark-star"><%= render 'bookmarks/bookmark_button', { post: post } %></div>
-          <div><%= link_to "地図", post_path(post.id) %></div>
+          <div>
+            <%= link_to post_path(post.id) do %>
+              <i class="fa-solid fa-location-dot"></i>
+            <% end %>
+          </div>
         <% else %>
-          <div class="ms-auto"><%= link_to "地図", post_path(post.id) %></div>
+          <div class="ms-auto">
+            <%= link_to post_path(post.id) do %>
+              <i class="fa-solid fa-location-dot"></i>
+            <% end %>
+          </div>
         <% end %>
       <% else %>
-        <div class="ms-auto"><%= link_to "地図", post_path(post.id) %></div>
+        <div class="ms-auto">
+          <%= link_to post_path(post.id) do %>
+            <i class="fa-solid fa-location-dot"></i>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <p class="mb-0"><%= post.content %></p>

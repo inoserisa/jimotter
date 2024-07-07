@@ -3,7 +3,11 @@
     <div class="card-body">
       <div class="d-flex mb-2">
         <%= link_to question.user.name, user_path(question.user), class: "link-dark name-link" %>
-        <div class="ms-auto"><%= link_to "回答", question_path(question.id) %></div>
+        <div class="ms-auto">
+          <%= link_to question_path(question.id) do %>
+            <i class="fa-solid fa-comment-dots"></i>
+          <% end %>
+        </div>
       </div>
       <p class="mb-0"><%= question.content %></p>
       <small class="mb-0 d-flex flex-row-reverse"><%= l question.created_at %></small>

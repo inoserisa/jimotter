@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   belongs_to :city
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_one :notification, as: :subject, dependent: :destroy
 
   validates :content, presence: true, length: { maximum: 200 }
 
