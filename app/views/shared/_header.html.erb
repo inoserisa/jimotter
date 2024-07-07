@@ -10,6 +10,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto main-nav align-items-center">
+            <% if current_user %>
+              <li>
+                <%= link_to notifications_path, class: "nav-link text-light" do %>
+                  <% if current_user.notifications.where(checked: false).exists? %>
+                    <i class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;"></i>
+                  <% else %>
+                    <i class="fa-solid fa-bell"></i>
+                  <% end %>
+                  通知
+                <% end %>
+              </li>
+            <% end %>
             <li>
               <%= link_to "このサイトについて", about_path, class: 'nav-link text-light' %>
             </li>
