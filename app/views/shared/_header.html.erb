@@ -4,6 +4,16 @@
       <div class="container">
         <%= link_to "Jimotter", root_path, class: 'navbar-brand', data: { turbo: false } %>
 
+        <% if current_user %>
+          <a href="#" class="nav-link text-light ms-auto mx-3 d-lg-none" data-bs-toggle="modal" data-bs-target="#notificationsModal">
+            <% if current_user.notifications.where(checked: false).exists? %>
+              <i id="notification-icon-small" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;"></i>
+            <% else %>
+              <i id="notification-icon-small" class="fa-solid fa-bell"></i>
+            <% end %>
+          </a>
+        <% end %>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,13 +22,12 @@
           <ul class="navbar-nav ms-auto main-nav align-items-center">
             <% if current_user %>
               <li class="nav-item">
-                <a href="#" class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#notificationsModal">
+                <a href="#" class="nav-link text-light d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#notificationsModal">
                   <% if current_user.notifications.where(checked: false).exists? %>
-                    <i id="notification-icon" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;"></i>
+                    <i id="notification-icon-large" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;"></i>
                   <% else %>
-                    <i id="notification-icon" class="fa-solid fa-bell"></i>
+                    <i id="notification-icon-large" class="fa-solid fa-bell"></i>
                   <% end %>
-                  通知
                 </a>
               </li>
             <% end %>
@@ -46,3 +55,17 @@
     </nav>
   </div>
 </header>
+
+<style>
+@media (min-width: 992px) {
+  .d-lg-none {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .d-lg-inline {
+    display: none !important;
+  }
+}
+</style>
