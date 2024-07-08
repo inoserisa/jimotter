@@ -4,12 +4,9 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 
 document.addEventListener("turbo:load", () => {
-  console.log("JavaScriptが正しく読み込まれました（Turbolinks対応）");
-
   const notificationsModal = document.getElementById('notificationsModal');
   if (notificationsModal) {
     notificationsModal.addEventListener('show.bs.modal', () => {
-      console.log("通知モーダルが開かれました");
 
       fetch('/notifications/mark_as_read', {
         method: 'PATCH',
@@ -18,13 +15,16 @@ document.addEventListener("turbo:load", () => {
           'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
       }).then(() => {
-        const bellIcon = document.getElementById('notification-icon');
-        if (bellIcon) {
-          console.log("通知アイコンの見た目を変更します");
-          bellIcon.classList.remove('faa-wrench', 'animated');
-          bellIcon.style.color = ''; // 元の色に戻す
-        } else {
-          console.log("通知アイコンが見つかりませんでした");
+        const bellIconSmall = document.getElementById('notification-icon-small');
+        const bellIconLarge = document.getElementById('notification-icon-large');
+        
+        if (bellIconSmall) {
+          bellIconSmall.classList.remove('faa-wrench', 'animated');
+          bellIconSmall.style.color = ''; // 元の色に戻す
+        }
+        if (bellIconLarge) {
+          bellIconLarge.classList.remove('faa-wrench', 'animated');
+          bellIconLarge.style.color = ''; // 元の色に戻す
         }
       }).catch(error => {
         console.error("Fetchリクエストに失敗しました: ", error);
