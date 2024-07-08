@@ -19,6 +19,43 @@
   
   <body class="d-flex flex-column vh-100">
     <%= render 'shared/header' %>
+
+    <!-- モーダルウィンドウ -->
+    <div class="modal fade" id="notificationsModal" tabindex="-1" aria-labelledby="notificationsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="notificationsModalLabel">新着通知</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <% if @notifications.present? %>
+                    <% @notifications.each do |notification| %>
+                      <div class="col-12 card mb-3 text-decoration-none shadow fadeUp">
+                        <div class="card-body">
+                          <div class="d-flex">
+                            <%= render "notifications/#{notification.action_type}", notification: notification %>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    通知はありません
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- モーダルウィンドウ終了 -->
     <main class="mb-auto">
       <%= render 'shared/flashes' %>
       <%= yield %>

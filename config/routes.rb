@@ -40,5 +40,9 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [:create, :destroy]
 
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index] do
+    collection do
+      patch :mark_as_read
+    end
+  end
 end
