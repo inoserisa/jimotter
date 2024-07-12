@@ -86,8 +86,10 @@ users ||--o{ bookmarks:""
 posts ||--o{ bookmarks:""
 users ||--o{ authenticates:""
 users ||--o{ notifications:""
-posts ||--o{ notifications:""
-comments ||--o{ notifications:""
+posts ||--|| notifications:""
+comments ||--|| notifications:""
+bookmarks ||--|| notifications:""
+answers ||--|| notifications:""
 users ||--o{ questions: ""
 users ||--o{ answers: ""
 questions ||--o{ answers: ""
@@ -96,28 +98,31 @@ answers }o--|| cities: ""
 
 users {
 integer id PK
-string name
-text avatar
 string email
-text password_digest
-integer role
-integer prefecture_id FK
-integer city_id FK
+string encrypted_password
+string reset_password_token
+datetime reset_password_sent_at
+datetime remember_created_at
+string name
+datetime deleted_at
 }
 
 posts{
 integer id PK
+integer user_id FK
 integer prefecture_id FK
 integer city_id FK
 string image
 text content
+float latitude
+float longitude
 }
 
 comments{
 integer id PK
 integer user_id FK
 integer post_id FK
-text content
+text comment_content
 }
 
 prefectures{
@@ -145,11 +150,11 @@ integer user_id FK
 }
 
 notifications{
-integer visitor_id(user_id) FK
-integer visited_id(user_id) FK
-integer post_id FK
-integer comment_id FK
-string action
+integer id PK
+integer user_id FK
+string subject_type
+integer subject_id
+string action_type
 boolean checked
 }
 
