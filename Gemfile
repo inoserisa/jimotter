@@ -95,3 +95,8 @@ gem 'dotenv-rails'
 gem 'meta-tags'
 
 gem 'paranoia'
+
+gem 'omniauth-twitter'
+gem 'omniauth-line'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'

@@ -1,11 +1,18 @@
 body {
   background-color: #FFF6ED;
-  padding-top: 56px;
+  padding-top: 75px;
   background-image: url("background-image.png");
   background-size: 60% auto;
   background-position: 100% 25%;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.app-logo {
+  height: 3em;
+  width:auto;
+  padding-top:0;
+  padding-bottom:0;
 }
 
 .footer-color {
@@ -132,7 +139,7 @@ body {
 @media(max-width: 767px) {
   body {
     background-size: 100% auto;
-    background-position: 100% 30px;
+    background-position: 100% 60px;
   }
   .post-button {
     font-size: 25px;
