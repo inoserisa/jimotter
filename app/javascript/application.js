@@ -20,11 +20,11 @@ document.addEventListener("turbo:load", () => {
         
         if (bellIconSmall) {
           bellIconSmall.classList.remove('faa-wrench', 'animated');
-          bellIconSmall.style.color = ''; // 元の色に戻す
+          // bellIconSmall.style.color = ''; // 元の色に戻す
         }
         if (bellIconLarge) {
           bellIconLarge.classList.remove('faa-wrench', 'animated');
-          bellIconLarge.style.color = ''; // 元の色に戻す
+          //bellIconLarge.style.color = ''; // 元の色に戻す
         }
       }).catch(error => {
         console.error("Fetchリクエストに失敗しました: ", error);
