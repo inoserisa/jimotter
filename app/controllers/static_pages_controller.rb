@@ -13,4 +13,8 @@ class StaticPagesController < ApplicationController
     current_user.destroy
     redirect_to root_path, notice: '退会しました', status: :see_other
   end
+
+  def privacy_policy; end
+
+  def terms; end
 end
