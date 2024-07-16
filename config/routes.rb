@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'about', to: 'static_pages#about'
   get 'cancel_membership', to: 'static_pages#cancel_membership'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'terms', to: 'static_pages#terms'
 
   delete 'destroy_user', to: 'static_pages#destroy_user'
 
