@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, uniqueness: true
   validate :email_not_taken_by_deleted_user
+  validates_acceptance_of :agreement_terms, allow_nil: false, on: :create
 
   def own?(object)
     if object.is_a?(User)

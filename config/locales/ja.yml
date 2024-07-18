@@ -10,6 +10,8 @@ ja:
         content: 本文
       question:
         content: 質問内容
+      user:
+        agreement_terms: 利用規約とプライバシーポリシー
     errors:
       messages:
         blank: "を入力してください"
@@ -17,6 +19,7 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+        accepted: "に同意してください"
   date:
     abbr_day_names:
     - 日
