@@ -42,6 +42,11 @@
 						<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
 					</div>
 
+					<div class="mb-5">
+						<%= f.check_box :agreement_terms, :as => :boolean, checked:false, class: "checkbox_check" %>
+						<%= link_to "利用規約", terms_path, target: "_blank" %>と<%= link_to "プライバシーポリシー", privacy_policy_path, target: "_blank" %>に同意します。
+					</div>
+
 					<div class="mb-3 d-flex justify-content-center">
 						<%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
 					</div>
