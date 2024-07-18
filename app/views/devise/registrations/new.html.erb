@@ -28,19 +28,23 @@
 						<%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
 					</div>
 
-					<div class="mb-3">
-						<%= f.label :password, class: "form-label" %>
-						<%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+					<% if @authenticate_id.present? %>
+						<%= hidden_field_tag :authenticate_auth, true %>
+					<% else %>
+						<div class="mb-3">
+							<%= f.label :password, class: "form-label" %>
+							<%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
 
-						<% if @minimum_password_length %>
-							<div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
-						<% end %>
-					</div>
+							<% if @minimum_password_length %>
+								<div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
+							<% end %>
+						</div>
 
-					<div class="mb-3">
-						<%= f.label :password_confirmation, class: "form-label" %>
-						<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-					</div>
+						<div class="mb-3">
+							<%= f.label :password_confirmation, class: "form-label" %>
+							<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+						</div>
+					<% end %>
 
 					<div class="mb-5">
 						<%= f.check_box :agreement_terms, :as => :boolean, checked:false, class: "checkbox_check" %>
@@ -55,6 +59,9 @@
 				<div class="text-center">
 					<%= render "devise/shared/links" %>
 				</div>
+
+				<%= link_to 'Xで登録', user_twitter_omniauth_authorize_path, method: :post %>
+				<%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post %>
 			</div>
 		</div>
 	</div>
