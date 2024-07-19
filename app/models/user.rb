@@ -9,13 +9,13 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
   has_many :notifications, dependent: :destroy
-  has_many :authenticates
+  has_many :authenticates, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :google_oauth2]
 
-  validates :name, presence: true, length: { maximum: 15 }
+  validates :name, presence: true, length: { maximum: 50 }
   validates :email, uniqueness: true
   validate :email_not_taken_by_deleted_user
   validates_acceptance_of :agreement_terms, allow_nil: false, on: :create
