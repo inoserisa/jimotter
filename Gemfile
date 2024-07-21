@@ -74,6 +74,10 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :production do
+  gem "omniauth-rails_csrf_protection"
+end
+
 gem "devise"
 
 gem 'rails-i18n'

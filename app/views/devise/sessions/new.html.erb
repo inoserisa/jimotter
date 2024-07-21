@@ -27,9 +27,18 @@
           </div>
         <% end %>
         
-        <div class="text-center">
+        <div class="text-center mb-4">
           <%= render "devise/shared/links" %>
         </div>
+
+        <h6 class="sns-login-or">または</h6>
+
+				<div class="text-center mt-3 mb-3">
+					<%= link_to image_tag('X_sign_in.svg'), user_twitter_omniauth_authorize_path, method: :post %>
+				</div>
+				<div class="text-center mb-3">
+					<%= link_to image_tag('Google_sign_in.svg'), user_google_oauth2_omniauth_authorize_path, method: :post %>
+				</div>
       </div>
     </div>
   </div>

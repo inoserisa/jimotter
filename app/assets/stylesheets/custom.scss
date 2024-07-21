@@ -155,7 +155,7 @@ body {
 
 @media(max-width: 992px) {
   .top-background {
-    background-position: 100% 15%;
+    background-position: 100% 30%;
   }
   .custom-title-top {
     font-size: 45px;
@@ -268,4 +268,27 @@ body {
 
 .bookmark-star {
   margin-right: 1em;
+}
+
+.sns-login-or {
+  color: #696969;
+  display: flex;
+  align-items: center; /* 垂直中心 */
+  justify-content: center; /* 水平中心 */
+  position: relative; /* 追加: before/afterの位置を相対的にする */
+}
+.sns-login-or:before, .sns-login-or:after {
+  border-top: #a7a7a7 1px solid; /* 線のスタイル */
+  content: ""; /* 空のコンテンツ */
+  width: 6em; /* 線の長さ */
+  top: 50%; /* 縦位置を中心に */
+  transform: translateY(-50%); /* 縦位置を調整 */
+}
+.sns-login-or:before {
+  left: 0; /* 左側に配置 */
+  margin-right: 1em; /* 文字の右隣 */
+}
+.sns-login-or:after {
+  right: 0; /* 右側に配置 */
+  margin-left: 1em; /* 文字の左隣 */
 }

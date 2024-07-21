@@ -2,16 +2,13 @@
 	<div class="row justify-content-center">
 		<div class="col-10 card shadow">
 			<div class="card-body">
-				<h2 class="pb-4 text-center"><%= t('.sign_up') %></h2>
+				<h2 class="pb-2 text-center"><%= t('.sign_up') %></h2>
 
-				<div class="card mb-3">
-					<div class="card-body">
-						<h6>新規登録でできること</h6>
-						<ul class="mb-0">
-							<li>投稿、質問、回答</li>
-							<li>投稿のブックマーク</li>
-							<li>投稿にコメント</li>
-						</ul>
+				<div class="row justify-content-center">
+					<div class="card mb-3 col-lg-8 col-sm-10 col-11" style="background-color: #fff; border-color: #185A9D;">
+						<div class="card-body text-center p-2" style="color: #185A9D;">
+							<i class="fa-solid fa-check fa-lg" style="color: #185A9D;"></i> 投稿・ブックマーク・コメント・通知の確認
+						</div>
 					</div>
 				</div>
 
@@ -44,22 +41,28 @@
 						</div>
 					<% end %>
 
-					<div class="mb-5">
+					<div class="mb-3 text-center">
 						<%= f.check_box :agreement_terms, :as => :boolean, checked:false, class: "checkbox_check" %>
 						<%= link_to "利用規約", terms_path, target: "_blank" %>と<%= link_to "プライバシーポリシー", privacy_policy_path, target: "_blank" %>に同意します。
 					</div>
 
-					<div class="mb-3 d-flex justify-content-center">
+					<div class="mb-2 d-flex justify-content-center">
 						<%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
 					</div>
 				<% end %>
 
-				<div class="text-center">
+				<div class="text-center mb-4">
 					<%= render "devise/shared/links" %>
 				</div>
 
-				<%= link_to 'Xで登録', user_twitter_omniauth_authorize_path, method: :post %>
-				<%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post %>
+				<h6 class="sns-login-or">または</h6>
+
+				<div class="text-center mt-3 mb-3">
+					<%= link_to image_tag('X_sign_up.svg'), user_twitter_omniauth_authorize_path, method: :post %>
+				</div>
+				<div class="text-center mb-3">
+					<%= link_to image_tag('Google_sign_up.svg'), user_google_oauth2_omniauth_authorize_path, method: :post %>
+				</div>
 			</div>
 		</div>
 	</div>
