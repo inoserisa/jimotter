@@ -10,9 +10,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if params[:authenticate_id].present?
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+      super do |resource|
+        if resource.persisted?
+          authenticate = Authenticate.find(params[:authenticate_id])
+          authenticate.user = resource
+          authenticate.save
+        end
+      end
+    else
+      super
+    end
+  end
 
   # GET /resource/edit
   # def edit
