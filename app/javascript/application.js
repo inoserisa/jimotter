@@ -34,3 +34,64 @@ document.addEventListener("turbo:load", () => {
     console.log("通知モーダルが見つかりませんでした");
   }
 });
+
+document.addEventListener('turbo:load', function() {
+  initializeTooltips();
+});
+
+document.addEventListener('turbo:before-stream-render', function() {
+  hideTooltips();
+});
+
+function initializeTooltips() {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+}
+
+function hideTooltips() {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    var tooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+    if (tooltip) {
+      tooltip.hide();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeTooltips();
+});
+
+document.addEventListener('turbo:load', function() {
+  initializeTooltips();
+});
+
+document.addEventListener('turbo:frame-load', function() {
+  initializeTooltips();
+});
+
+introJs().setOptions({
+  steps: [{
+    intro: "Jimotterへようこそ！アプリの説明を開始します。"
+  }, {
+    element: document.querySelector('#login'),
+    intro: "ログインすると投稿・ブックマークなどができます。"
+  },{
+    element: document.querySelector('#search'),
+    intro: "地域を指定して検索が可能です。都道府県のみでも検索できます。"
+  }]
+}).start();
+
+document.addEventListener('turbo:load', function() {
+  if (!document.cookie.includes('tutorial_shown=true')) {
+    startTour();
+  }
+
+  document.getElementById('start-tour').addEventListener('click', startTour);
+
+  introJs().oncomplete(function() {
+    document.cookie = 'tutorial_shown=true; path=/';
+  });
+});

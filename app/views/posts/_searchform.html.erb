@@ -1,6 +1,6 @@
         <!-- app/views/posts/_search_form.html.erb -->
         <%= search_form_for @q do |f| %>
-          <div class="d-flex">
+          <div class="d-flex" id="search">
             <div class="form-group">
               <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, { prompt: "都道府県" }, { class: "form-select form-select-lg prefecture-box" } %>
             </div>
