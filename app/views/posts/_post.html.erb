@@ -21,7 +21,7 @@
         <% end %>
       <% else %>
         <div class="ms-auto">
-          <%= link_to post_path(post.id), data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "地図を見る" do %>
+          <%= link_to post_path(post.id), id: "map", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "地図を見る" do %>
             <i class="fa-solid fa-location-dot"></i>
           <% end %>
         </div>

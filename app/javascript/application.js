@@ -72,26 +72,34 @@ document.addEventListener('turbo:frame-load', function() {
   initializeTooltips();
 });
 
-introJs().setOptions({
-  steps: [{
-    intro: "Jimotterへようこそ！アプリの説明を開始します。"
-  }, {
-    element: document.querySelector('#login'),
-    intro: "ログインすると投稿・ブックマークなどができます。"
-  },{
-    element: document.querySelector('#search'),
-    intro: "地域を指定して検索が可能です。都道府県のみでも検索できます。"
-  }]
-}).start();
+function startTour() {
+  introJs.tour().setOptions({
+    steps: [{
+      intro: "Jimotterへようこそ！アプリの説明を開始します。"
+    }, {
+      element: document.querySelector('#login'),
+      intro: "ログインすると投稿・ブックマークなどができます。"
+    },{
+      element: document.querySelector('#search'),
+      intro: "地域を指定して検索が可能です。都道府県のみでも検索できます。"
+    },{
+      element: document.querySelector('#map'),
+      intro: "投稿地域がどこにあるのか地図を見ることができます。また、コメントの投稿もできます。"
+    }]
+  }).start();
 
-document.addEventListener('turbo:load', function() {
+  introJs.tour().oncomplete(function() {
+    document.cookie = 'tutorial_shown=true; path=/';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
   if (!document.cookie.includes('tutorial_shown=true')) {
     startTour();
   }
 
-  document.getElementById('start-tour').addEventListener('click', startTour);
-
-  introJs().oncomplete(function() {
-    document.cookie = 'tutorial_shown=true; path=/';
-  });
+  const startTourButton = document.getElementById('start-tour');
+  if (startTourButton) {
+    startTourButton.addEventListener('click', startTour);
+  }
 });
