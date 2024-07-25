@@ -73,7 +73,7 @@ document.addEventListener('turbo:frame-load', function() {
 });
 
 function startTour() {
-  introJs().setOptions({
+  introJs.tour().setOptions({
     steps: [{
       intro: "Jimotterへようこそ！アプリの説明を開始します。"
     }, {
@@ -89,13 +89,16 @@ function startTour() {
     doneLabel: '完了', // Doneボタンのラベル
     nextLabel: '次へ',
     prevLabel: '前へ',
-    skipLabel: 'スキップ',
     exitOnEsc: true,
     exitOnOverlayClick: false,
     showProgress: true,
     showBullets: true,
+    // 以下のメソッドを修正
     oncomplete: function() {
-      document.cookie = 'tutorial_shown=true; path=/; max-age=' + 60*60*24*365; // Cookieの有効期限を1年に設定
+      document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365); // Cookieの有効期限を1年に設定
+    },
+    onexit: function() {
+      document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365); // チュートリアルの途中で終了した場合もCookieを設定
     }
   }).start();
 }
@@ -117,3 +120,4 @@ document.addEventListener('DOMContentLoaded', function() {
     startTourButton.addEventListener('click', startTour);
   }
 });
+
