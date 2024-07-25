@@ -73,7 +73,7 @@ document.addEventListener('turbo:frame-load', function() {
 });
 
 function startTour() {
-  introJs.tour().setOptions({
+  introJs().setOptions({
     steps: [{
       intro: "Jimotterへようこそ！アプリの説明を開始します。"
     }, {
@@ -86,15 +86,20 @@ function startTour() {
       element: document.querySelector('#map'),
       intro: "投稿地域がどこにあるのか地図を見ることができます。また、コメントの投稿もできます。"
     }]
-  }).start();
-
-  introJs.tour().oncomplete(function() {
-    document.cookie = 'tutorial_shown=true; path=/';
+  }).start().oncomplete(function() {
+    document.cookie = 'tutorial_shown=true; path=/; max-age=' + 60*60*24*365; // Cookieの有効期限を1年に設定
   });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  if (!document.cookie.includes('tutorial_shown=true')) {
+  function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+
+  if (!getCookie('tutorial_shown')) {
     startTour();
   }
 
