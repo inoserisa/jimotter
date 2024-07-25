@@ -86,19 +86,22 @@ function startTour() {
       element: document.querySelector('#map'),
       intro: "投稿地域がどこにあるのか地図を見ることができます。また、コメントの投稿もできます。"
     }],
-    doneLabel: '完了', // Doneボタンのラベル
+    doneLabel: '完了',
     nextLabel: '次へ',
     prevLabel: '前へ',
     exitOnEsc: true,
     exitOnOverlayClick: false,
     showProgress: true,
     showBullets: true,
-    // 以下のメソッドを修正
     oncomplete: function() {
-      document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365); // Cookieの有効期限を1年に設定
+      console.log('Tutorial completed');
+      document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365);
+      console.log('Cookie set in oncomplete: ' + document.cookie);
     },
     onexit: function() {
-      document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365); // チュートリアルの途中で終了した場合もCookieを設定
+      console.log('Tutorial exited');
+      document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365);
+      console.log('Cookie set in onexit: ' + document.cookie);
     }
   }).start();
 }
@@ -112,12 +115,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (!getCookie('tutorial_shown')) {
+    console.log('Starting tour');
     startTour();
+  } else {
+    console.log('Tutorial already shown');
   }
 
   const startTourButton = document.getElementById('start-tour');
   if (startTourButton) {
-    startTourButton.addEventListener('click', startTour);
+    startTourButton.addEventListener('click', function() {
+      console.log('Manually starting tour via button click');
+      startTour();
+    });
   }
 });
-
