@@ -85,10 +85,19 @@ function startTour() {
     },{
       element: document.querySelector('#map'),
       intro: "投稿地域がどこにあるのか地図を見ることができます。また、コメントの投稿もできます。"
-    }]
-  }).start().oncomplete(function() {
-    document.cookie = 'tutorial_shown=true; path=/; max-age=' + 60*60*24*365; // Cookieの有効期限を1年に設定
-  });
+    }],
+    doneLabel: '完了', // Doneボタンのラベル
+    nextLabel: '次へ',
+    prevLabel: '前へ',
+    skipLabel: 'スキップ',
+    exitOnEsc: true,
+    exitOnOverlayClick: false,
+    showProgress: true,
+    showBullets: true,
+    oncomplete: function() {
+      document.cookie = 'tutorial_shown=true; path=/; max-age=' + 60*60*24*365; // Cookieの有効期限を1年に設定
+    }
+  }).start();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
