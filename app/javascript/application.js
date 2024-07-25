@@ -95,21 +95,15 @@ function startTour() {
     exitOnOverlayClick: false,
     showProgress: true,
     showBullets: true,
-    oncomplete: function() {
+  }).start().oncomplete(function() {
       console.log('Tutorial completed');
       document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365);
       console.log('Cookie set in oncomplete: ' + document.cookie);
-    },
-    onexit: function() {
+    }).onexit(function() {
       console.log('Tutorial exited');
       document.cookie = 'tutorial_shown=true; path=/; max-age=' + (60*60*24*365);
       console.log('Cookie set in onexit: ' + document.cookie);
-    }
-  }).start().oncomplete(function() {
-    console.log('Completed callback from start method');
-  }).onexit(function() {
-    console.log('Exit callback from start method');
-  });
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
