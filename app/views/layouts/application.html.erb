@@ -20,7 +20,7 @@
   <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
   
-  <body class="d-flex flex-column vh-100">
+  <body class="d-flex flex-column vh-100" data-logged-in="<%= user_signed_in? %>">
     <%= render 'shared/header' %>
 
     <!-- モーダルウィンドウ -->
