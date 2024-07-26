@@ -7,11 +7,17 @@
         <% if current_user %>
           <a href="#" class="nav-link text-light ms-auto mx-3 d-lg-none" data-bs-toggle="modal" data-bs-target="#notificationsModal">
             <% if current_user.notifications.where(checked: false).exists? %>
-              <i id="notification-icon-small" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;"></i>
+              <i id="notification-icon-small" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="通知"></i>
             <% else %>
-              <i id="notification-icon-small" class="fa-solid fa-bell" style="color: #FFF;"></i>
+              <i id="notification-icon-small" class="fa-solid fa-bell" style="color: #FFF;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="通知"></i>
             <% end %>
           </a>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <i class="fa-solid fa-circle-question nav-link d-lg-none " style="color: #ffffff; margin-right: 15px;" id="start-tour-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
+        <% else %>
+          <i class="fa-solid fa-circle-question ms-auto nav-link d-lg-none " style="color: #ffffff; margin-right: 15px;" id="start-tour-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
         <% end %>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,13 +30,16 @@
               <li class="nav-item">
                 <a href="#" class="nav-link text-light d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#notificationsModal">
                   <% if current_user.notifications.where(checked: false).exists? %>
-                    <i id="notification-icon-large" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;"></i>
+                    <i id="notification-icon-large" class="fa-solid fa-bell faa-wrench animated" style="color: #f2ee7d;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="通知"></i>
                   <% else %>
-                    <i id="notification-icon-large" class="fa-solid fa-bell" style="color: #FFF;"></i>
+                    <i id="notification-icon-large" class="fa-solid fa-bell" style="color: #FFF;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="通知"></i>
                   <% end %>
                 </a>
               </li>
             <% end %>
+            <li>
+              <i class="fa-solid fa-circle-question nav-link d-lg-inline" style="color: #ffffff;" id="start-tour-lg" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
+            </li>
             <li class="nav-item">
               <%= link_to "サイトについて", about_path, class: 'nav-link header-text' %>
             </li>

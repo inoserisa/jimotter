@@ -292,3 +292,7 @@ body {
   right: 0; /* 右側に配置 */
   margin-left: 1em; /* 文字の左隣 */
 }
+
+#start-tour-sm, #start-tour-lg {
+  cursor: pointer;
+}
