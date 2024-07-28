@@ -3,5 +3,10 @@ ja:
     new:
       title: 質問投稿
       content: 質問内容
+    edit:
+      title: 質問編集
+    update:
+      success: "質問を更新しました"
+      failed: "質問の編集に失敗しました"
     destroy:
       success: "質問を削除しました"
