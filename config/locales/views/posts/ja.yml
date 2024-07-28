@@ -10,6 +10,9 @@ ja:
     show:
       title: '投稿詳細'
     edit:
-      title:
+      title: '投稿編集'
+    update:
+      success: '投稿を更新しました'
+      failed: '投稿の編集に失敗しました'
     destroy:
       success: '削除しました'

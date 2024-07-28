@@ -5,7 +5,7 @@
     <div class="d-flex">
       <% if current_user && current_user.own?(comment) %>
         <%= link_to post_comment_path(comment.post, comment), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "ms-auto px-3" do %>
-          <i class="bi bi-trash-fill"></i>
+          <i class="fa-solid fa-trash-can" style="color: #185a9d;"></i>
         <% end %>
       <% end %>
     </div>

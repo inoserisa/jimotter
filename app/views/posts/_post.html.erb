@@ -9,20 +9,20 @@
           <div class="ms-auto bookmark-star"><%= render 'bookmarks/bookmark_button', { post: post } %></div>
           <div>
             <%= link_to post_path(post.id), id: "map", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "地図を見る" do %>
-              <i class="fa-solid fa-location-dot"></i>
+              <i class="fa-solid fa-location-dot" style="color: #185a9d;"></i>
             <% end %>
           </div>
         <% else %>
           <div class="ms-auto">
             <%= link_to post_path(post.id), id: "map", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "地図を見る" do %>
-              <i class="fa-solid fa-location-dot"></i>
+              <i class="fa-solid fa-location-dot" style="color: #185a9d;"></i>
             <% end %>
           </div>
         <% end %>
       <% else %>
         <div class="ms-auto">
           <%= link_to post_path(post.id), id: "map", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "地図を見る" do %>
-            <i class="fa-solid fa-location-dot"></i>
+            <i class="fa-solid fa-location-dot" style="color: #185a9d;"></i>
           <% end %>
         </div>
       <% end %>

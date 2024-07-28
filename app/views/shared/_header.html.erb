@@ -14,10 +14,12 @@
           </a>
         <% end %>
 
-        <% if user_signed_in? %>
-          <i class="fa-solid fa-circle-question nav-link d-lg-none " style="color: #ffffff; margin-right: 15px;" id="start-tour-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
-        <% else %>
-          <i class="fa-solid fa-circle-question ms-auto nav-link d-lg-none " style="color: #ffffff; margin-right: 15px;" id="start-tour-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
+        <% if current_page?(root_path) %>
+          <% if user_signed_in? %>
+            <i class="fa-solid fa-circle-question nav-link d-lg-none " style="color: #ffffff; margin-right: 15px;" id="start-tour-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
+          <% else %>
+            <i class="fa-solid fa-circle-question ms-auto nav-link d-lg-none " style="color: #ffffff; margin-right: 15px;" id="start-tour-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
+          <% end %>
         <% end %>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,9 +39,11 @@
                 </a>
               </li>
             <% end %>
-            <li>
-              <i class="fa-solid fa-circle-question nav-link d-lg-inline" style="color: #ffffff;" id="start-tour-lg" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
-            </li>
+            <% if current_page?(root_path) %>
+              <li>
+                <i class="fa-solid fa-circle-question nav-link d-lg-inline" style="color: #ffffff;" id="start-tour-lg" data-bs-toggle="tooltip" data-bs-placement="bottom" title="チュートリアル"></i>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to "サイトについて", about_path, class: 'nav-link header-text' %>
             </li>
