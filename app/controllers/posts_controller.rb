@@ -34,7 +34,19 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user)
   end
 
-  def edit; end
+  def edit
+  @post = current_user.posts.find(params[:id])
+  end
+  
+  def update
+    @post = current_user.posts.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: t('.success')
+    else
+      flash.now[:alert] = t('failed')
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     @post = current_user.posts.find(params[:id])
