@@ -22,6 +22,9 @@
                 <%= link_to question_path(@question), data: { turbo_method: :delete, turbo_confirm: "削除しますか？", bs_toggle: "tooltip", bs_placement: "top" }, title: "質問を削除" do %>
                   <i class="fa-solid fa-trash-can" style="color: #185a9d;"></i>
                 <% end %>
+                <%= link_to edit_question_path(@question), id: "button-edit-#{@question.id}", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "質問を編集" do %>
+                  <i class="fa-solid fa-pen-to-square" style="color: #185a9d; margin-right: 15px;"></i>
+                <% end %>                  
               <% end %>
             </div>
           <div class="d-flex flex-row-reverse my-3">

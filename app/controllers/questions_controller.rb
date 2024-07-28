@@ -22,6 +22,20 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.includes(:user, :prefecture, :city).order(created_at: :desc)
   end
 
+  def edit
+    @question = current_user.questions.find(params[:id])
+  end
+    
+  def update
+    @question = current_user.questions.find(params[:id])
+    if @question.update(question_params)
+      redirect_to question_path(@question), notice: t('.success')
+    else
+      flash.now[:alert] = t('failed')
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @question = current_user.questions.find(params[:id])
     @question.destroy!
