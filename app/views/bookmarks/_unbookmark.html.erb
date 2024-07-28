@@ -1,3 +1,3 @@
 <%= link_to bookmark_path(post.bookmarks.find { |b| b.user_id == current_user.id }), id: "unbookmark-button-for-post-#{post.id}", data: { turbo_method: :delete } do %>
-  <i class="bi bi-star-fill"></i>
+  <i class="fa-solid fa-star" style="color: #185a9d;"></i>
 <% end %>
