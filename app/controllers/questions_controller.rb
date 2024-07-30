@@ -10,8 +10,9 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
-      redirect_to @question, notice: "質問が投稿されました"
+      redirect_to @question, notice: t('.success')
     else
+      flash.now[:alert] = t('.failed')
       render :new, status: :unprocessable_entity
     end
   end

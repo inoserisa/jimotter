@@ -26,29 +26,38 @@
             <a class="nav-link" id="bookmark-tab" data-bs-toggle="tab" href="#bookmark" role="tab" aria-controls="bookmark" aria-selected="false">ブックマーク</a>
           </li>
         </ul>
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
-          <% if @posts.present? %>
-            <%= render partial: 'posts/post', collection: @posts, as: :post %>
-          <% else %>
-            <p class="text-center mt-5">まだ投稿はありません。</p>
-          <% end %>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+            <% if @posts.present? %>
+              <%= turbo_frame_tag "posts-page-#{@posts.current_page}" do %>
+                <%= render partial: 'posts/post', collection: @posts, as: :post %>
+                <%= turbo_frame_tag "posts-page-#{@posts.next_page}", loading: :lazy, src: path_to_next_page(@posts) %>
+              <% end %>
+            <% else %>
+              <p class="text-center mt-5">まだ投稿はありません。</p>
+            <% end %>
+          </div>
+          <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+            <% if @questions.present? %>
+              <%= turbo_frame_tag "questions-page-#{params[:question_page] || @questions.current_page}" do %>
+                <%= render 'questions/question', questions: @questions %>
+                <%= turbo_frame_tag "questions-page-#{@questions.next_page}", loading: :lazy, src: path_to_next_page(@questions) %>
+              <% end %>
+            <% else %>
+              <p class="text-center mt-5">まだ質問はありません。</p>
+            <% end %>
+          </div>
+          <div class="tab-pane" id="bookmark" role="tabpanel" aria-labelledby="bookmark-tab">
+            <% if @bookmark_posts.present? %>
+              <%= turbo_frame_tag "bookmark-posts-page-#{params[:bookmark_posts_page] || @bookmark_posts.current_page}" do %>
+                <%= render partial: 'posts/post', collection: @bookmark_posts, as: :post %>
+                <%= turbo_frame_tag "bookmark-posts-page-#{@bookmark_posts.next_page}", loading: :lazy, src: path_to_next_page(@bookmark_posts) %>
+              <% end %>
+            <% else %>
+              <p class="text-center mt-5">ブックマークはありません。</p>
+            <% end %>
+          </div>
         </div>
-        <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
-          <% if @questions.present? %>
-            <%= render 'questions/question', questions: @questions %>
-          <% else %>
-            <p class="text-center mt-5">まだ質問はありません。</p>
-          <% end %>
-        </div>
-        <div class="tab-pane" id="bookmark" role="tabpanel" aria-labelledby="bookmark-tab">
-          <% if @bookmark_posts.present? %>
-            <%= render partial: 'posts/post', collection: @bookmark_posts, as: :post %>
-          <% else %>
-            <p class="text-center mt-5">ブックマークはありません。</p>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
 </div>
