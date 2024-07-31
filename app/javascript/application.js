@@ -3,6 +3,25 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 
+document.addEventListener('turbo:load', function() {
+  var loader = document.querySelector('.loader-wrap');
+
+  // ページの読み込みが完了したらアニメーションを非表示
+  window.addEventListener('load', function() {
+    if (loader) {
+      loader.style.display = 'none';
+    }
+  });
+
+  // ページの読み込みが完了してなくても2秒後にアニメーションを非表示にする
+  setTimeout(function() {
+    if (loader) {
+      loader.style.display = 'none';
+    }
+  }, 1000);
+});
+
+
 document.addEventListener("turbo:load", () => {
   const notificationsModal = document.getElementById('notificationsModal');
   if (notificationsModal) {

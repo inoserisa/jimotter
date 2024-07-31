@@ -1,6 +1,18 @@
-<div class="top-background">  
-  <div class="container d-flex flex-column justify-content-center" style="min-height: 10vh;">
+<div class="loader-wrap">
+  <div class="loader">Loading...</div>
+</div>
+
+<div class="top-background">
+  <div class="container-fluid question-pickup">
     <div class="row">
+      <% @question_pickups.each do |question_pickup| %>
+        <div class="question-pickup-text"><button>pickup</button>
+        <%= link_to "#{question_pickup.content}", question_path(question_pickup) %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container d-flex flex-column justify-content-center" style="min-height: 10vh;">
+    <div class="row">    
       <div class="jumbotron jumbotron-fluid col-12">
         <div class="col-lg-7 col-md-7">
           <div class="text-center custom-title-top"><span>わたしのじもと、</span></div>
