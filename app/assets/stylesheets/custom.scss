@@ -296,3 +296,25 @@ body {
 #start-tour-sm, #start-tour-lg {
   cursor: pointer;
 }
+
+.question-pickup {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.question-pickup-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+
+  button {
+    background-color: #185a9d;
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.8em;
+    margin-right: 10px;
+  }
+}
