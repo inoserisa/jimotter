@@ -3,6 +3,14 @@
     <div class="card-body">
       <div class="d-flex mb-2">
         <%= link_to question.user.name, user_path(question.user), class: "link-dark name-link" %>
+          <% if question.area_id.present? %>
+            <div class="area-box ms-2">
+            <%= question.area.name %> 対象</div>
+          <% else %>
+            <div class="area-box ms-2">
+            全地域対象
+            </div>
+          <% end %>
         <div class="ms-auto">
           <%= link_to question_path(question.id) do %>
             <i class="fa-solid fa-comment-dots"></i>

@@ -6,15 +6,16 @@
         <div class="card-body p-5">
           <div class="row">
             <div>
-              <% if @question.area_id.present? %>
-                <p>対象地域:<%= Area.find(@question.area_id).name %></p>
-              <% else %>
-                <p>対象地域:全地域</p>
-              <% end %>
-            </div>
-            <div>
               <ul class="list-inline mb-5">
                 <li class="list-inline-item"><%= link_to @question.user.name, user_path(@question.user), class: "text-decoration-none link-dark name-link" %></li>
+                <% if @question.area_id.present? %>
+                  <li class="list-inline-item area-box">
+                  <%= Area.find(@question.area_id).name %> 対象</li>
+                <% else %>
+                  <li class="list-inline-item area-box">
+                  全地域対象
+                  </li>
+                <% end %>
               </ul>
             </div>
             <div class="container mb-3">
