@@ -1,67 +1,73 @@
-<div class="container mt-5">
-	<div class="row justify-content-center">
-		<div class="col-10 card shadow">
-			<div class="card-body">
-				<h2 class="pb-2 text-center"><%= t('.sign_up') %></h2>
+<% breadcrumb :user_new %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="col-12 card shadow mb-5">
+        <div class="card-body">
+					<h2 class="pb-2 text-center"><%= t('.sign_up') %></h2>
 
-				<div class="row justify-content-center">
-					<div class="card mb-3 col-lg-8 col-sm-10 col-11" style="background-color: #fff; border-color: #185A9D;">
-						<div class="card-body text-center p-2" style="color: #185A9D;">
-							<i class="fa-solid fa-check fa-lg" style="color: #185A9D;"></i> 投稿・ブックマーク・コメント・通知の確認
+					<div class="row justify-content-center">
+						<div class="card mb-3 col-lg-8 col-sm-10 col-11" style="background-color: #fff; border-color: #185A9D;">
+							<div class="card-body text-center p-2" style="color: #185A9D;">
+								<i class="fa-solid fa-check fa-lg" style="color: #185A9D;"></i> 投稿・ブックマーク・コメント・通知の確認
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  			<%= hidden_field_tag :authenticate_id, session[:authenticate_id] if session[:authenticate_id].present? %>
-					<%= render "devise/shared/error_messages", resource: resource %>
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					<%= hidden_field_tag :authenticate_id, session[:authenticate_id] if session[:authenticate_id].present? %>
+						<%= render "devise/shared/error_messages", resource: resource %>
 
-					<div class="mb-3">
-						<%= f.label :name, class: "form-label" %>
-						<%= f.text_field :name, autofocus: true, class: 'form-control' %>
-					</div>
-
-					<div class="mb-3">
-						<%= f.label :email, class: "form-label" %>
-						<%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
-					</div>
-
-					<% if session[:authenticate_id].present? %>
-						<%= f.hidden_field :password, value: Devise.friendly_token %>
-						<%= f.hidden_field :password_confirmation, value: Devise.friendly_token %>
-					<% else %>
-						<div class="field mb-3">
-							<%= f.label :password %><br />
-							<%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+						<div class="mb-3 px-2">
+							<%= f.label :name, class: "form-label" %>
+							<%= f.text_field :name, autofocus: true, class: 'form-control' %>
 						</div>
 
-						<div class="field mb-3">
-							<%= f.label :password_confirmation %><br />
-							<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+						<div class="mb-3 px-2">
+							<%= f.label :email, class: "form-label" %>
+							<%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
+						</div>
+
+						<% if session[:authenticate_id].present? %>
+							<%= f.hidden_field :password, value: Devise.friendly_token %>
+							<%= f.hidden_field :password_confirmation, value: Devise.friendly_token %>
+						<% else %>
+							<div class="field mb-3 px-2">
+								<%= f.label :password %><br />
+								<%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+              <% if @minimum_password_length %>
+                <div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
+              <% end %>								
+							</div>
+
+							<div class="field mb-3 px-2">
+								<%= f.label :password_confirmation %><br />
+								<%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+							</div>
+						<% end %>
+
+						<div class="mb-3 text-center">
+							<%= f.check_box :agreement_terms, :as => :boolean, checked:false, class: "checkbox_check" %>
+							<%= link_to "利用規約", terms_path, target: "_blank", rel: "noopener noreferrer" %>と<%= link_to "プライバシーポリシー", privacy_policy_path, target: "_blank", rel: "noopener noreferrer" %>に同意します。
+						</div>
+
+						<div class="mb-2 d-flex justify-content-center">
+							<%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
 						</div>
 					<% end %>
 
-					<div class="mb-3 text-center">
-						<%= f.check_box :agreement_terms, :as => :boolean, checked:false, class: "checkbox_check" %>
-						<%= link_to "利用規約", terms_path, target: "_blank" %>と<%= link_to "プライバシーポリシー", privacy_policy_path, target: "_blank" %>に同意します。
+					<div class="text-center mb-4">
+						<%= render "devise/shared/links" %>
 					</div>
 
-					<div class="mb-2 d-flex justify-content-center">
-						<%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
+					<h6 class="sns-login-or">または</h6>
+
+					<div class="text-center mt-3 mb-3">
+						<%= link_to image_tag('X_sign_up.svg'), user_twitter_omniauth_authorize_path, method: :post %>
 					</div>
-				<% end %>
-
-				<div class="text-center mb-4">
-					<%= render "devise/shared/links" %>
-				</div>
-
-				<h6 class="sns-login-or">または</h6>
-
-				<div class="text-center mt-3 mb-3">
-					<%= link_to image_tag('X_sign_up.svg'), user_twitter_omniauth_authorize_path, method: :post %>
-				</div>
-				<div class="text-center mb-3">
-					<%= link_to image_tag('Google_sign_up.svg'), user_google_oauth2_omniauth_authorize_path, method: :post %>
+					<div class="text-center mb-3">
+						<%= link_to image_tag('Google_sign_up.svg'), user_google_oauth2_omniauth_authorize_path, method: :post %>
+					</div>
 				</div>
 			</div>
 		</div>

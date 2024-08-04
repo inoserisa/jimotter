@@ -103,3 +103,5 @@ gem 'paranoia'
 gem 'omniauth-twitter'
 gem 'omniauth-line'
 gem 'omniauth-google-oauth2'
+
+gem 'gretel'
