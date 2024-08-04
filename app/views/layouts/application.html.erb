@@ -61,6 +61,15 @@
     <!-- モーダルウィンドウ終了 -->
     <main class="mb-auto">
       <%= render 'shared/flashes' %>
+      <% unless controller_name == 'static_pages' && action_name == 'top' %>
+        <div class="container pt-5 mb-2">
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+              <%= breadcrumbs separator: " &rsaquo; ", class:"gretel-text" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
     <%= render 'shared/footer' %>
