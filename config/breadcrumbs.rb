@@ -52,6 +52,11 @@ crumb :post_show do |post|
   parent :root
 end
 
+crumb :question_new do
+  link "質問投稿", new_question_path
+  parent :root
+end
+
 crumb :question_show do |question|
   link "#{question.user.name}さんの質問", question_path(question)
   parent :root

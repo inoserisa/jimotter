@@ -1,12 +1,23 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-10 card shadow">
-      <div class="card-body">
-        <div class="col-lg-8 offset-lg-2">
+<% breadcrumb :question_new %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <article class="card shadow">
+        <div class="card-body p-5">
           <h2 class="pb-4 text-center"><%= t('.title') %></h2>
+          <p class="text-center">色んな地域の人に質問してみよう！<br>例えば・・・</p>
+          <div class="questionform-layout">
+            <p>イメージが根強いけど意外と食べない食べ物は？</p>
+          </div>
+          <div class="questionform-layout-right">
+            <p>地味だけど推してる名所は？</p>
+          </div>
+          <div style="padding-top: 10px;">
+            <p class="text-center mb-2">対象地域を設定することもできます！</p>
+          </div>
           <%= render 'form', { question: @question } %>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </div>

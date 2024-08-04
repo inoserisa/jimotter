@@ -2,7 +2,7 @@
   <h5>コメント</h5>
   <%= form_with model: comment, url: post_comments_path(post), local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <%= f.text_area :comment_content, class: 'form-control mb-3',row: 10 %>
+    <%= f.text_area :comment_content, class: 'form-control mb-3',row: 10, placeholder: "コメントを入力" %>
     <%= f.submit "送信", class: 'btn btn-primary comment-button w-100 mb-3' %>
   <% end %>
 </div>
