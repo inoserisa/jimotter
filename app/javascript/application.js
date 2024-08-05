@@ -90,3 +90,23 @@ document.addEventListener('turbo:load', function() {
 document.addEventListener('turbo:frame-load', function() {
   initializeTooltips();
 });
+
+document.addEventListener('turbo:load', () => {
+  // スクロールトップボタンをクリックしたときの処理
+  const scrollTopBtn = document.querySelector('.scroll-top-btn');
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // ページトップへスクロール
+    });
+  }
+
+  // ページが100ピクセルまでスクロールされたらボタンを表示
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      scrollTopBtn.classList.add('show'); // ボタンを表示
+    } else {
+      scrollTopBtn.classList.remove('show'); // ボタンを非表示
+    }
+  });
+});
