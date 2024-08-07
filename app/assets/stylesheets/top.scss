@@ -1,0 +1,117 @@
+.top-background {
+  background-image: url("background-image.png");
+  background-size: 60% auto;
+  background-position: 100% 25%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.custom-title-top, .custom-title-under {
+  color: #185a9d;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.custom-title-top {
+  margin-top: 15%;
+}
+
+.custom-title-top span, .custom-title-under span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.custom-title-top span::before, .custom-title-under span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* アニメーションの開始位置 */
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  animation: slideBackground 1s linear forwards; /* アニメーションの設定 */
+  z-index: -1;
+}
+
+.title-text{
+  h6 {
+  color:#185a9d;
+  line-height: 1.8em;
+  text-shadow: 0px 0px 7px #FFF, 0px 0px 7px #FFF, 0px 0px 7px #FFF, 0px 0px 7px #FFF;
+  font-weight: bold;
+}
+}
+
+.post-button {
+  width: 400px;
+  font-size: 25px;
+  font-weight: bold;
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
+  border-color:#FFF;
+}
+
+.search-title {
+  background-color: rgba(255,255,255,0.7);
+  color:#185a9d;
+}
+
+@media(max-width: 992px) {
+  .top-background {
+    background-position: 100% 30%;
+  }
+  .custom-title-top {
+    font-size: 45px;
+  }
+  .custom-title-under {
+    font-size: 45px;
+  }
+}
+
+@media(max-width: 767px) {
+  .top-background {
+    background-size: 100% auto;
+    background-position: 100% 60px;
+  }
+  .post-button {
+    font-size: 25px;
+    width: 350px;
+  }
+  .custom-title-top {
+    margin-top: 15%;
+    font-size: 40px;
+  }
+  .custom-title-under {
+    font-size: 40px;
+  }
+  .custom-title-top span::before, .custom-title-under span::before {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+#start-tour-sm, #start-tour-lg {
+  cursor: pointer;
+}
+
+.question-pickup {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.question-pickup-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+
+  button {
+    background-color: #185a9d;
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.8em;
+    margin-right: 10px;
+  }
+}

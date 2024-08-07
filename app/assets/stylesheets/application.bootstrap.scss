@@ -1,4 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import 'custom';
+@import 'shared/header';
+@import 'shared/footer';
+@import 'top';
+@import 'search';
+@import 'about';
+@import 'posts/show';
+@import 'questions/new';
+@import 'users/show';
 @import 'loading';

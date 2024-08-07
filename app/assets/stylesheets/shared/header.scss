@@ -1,0 +1,36 @@
+.app-logo {
+  height: 3em;
+  width:auto;
+  padding-top:0;
+  padding-bottom:0;
+}
+
+.header-color {
+  background-image: linear-gradient(120deg, #43cea2, #185a9d);
+}
+
+.header-text {
+  color: #FFF;
+  position:relative;
+}
+
+.header-text:hover {
+  color: #FFF;
+}
+
+.header-text::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #FFF;
+  bottom: -1px;
+  transform: scale(0, 1);
+  transform-origin: center top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
+  transition: transform 0.3s;   /*変形の時間*/
+}
+  
+.header-text:hover::after {
+  transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+}
