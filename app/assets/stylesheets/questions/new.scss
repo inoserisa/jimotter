@@ -1,0 +1,46 @@
+.questionform-layout {
+  p {
+    text-align: center;
+    position: relative;
+    padding: 0.6em;
+    background:#e1e1e1;
+    border-radius: 7px;
+    margin-bottom: 25px;
+    width: 70%;
+  }
+
+  p:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 20%;
+    border: 15px solid transparent;
+    border-top: 15px solid #e1e1e1;
+    width: 0;
+    height: 0;
+  }
+}
+.questionform-layout-right {
+  p {
+    text-align: center;
+    position: relative;
+    padding: 0.6em;
+    background: #e1e1e1;
+    border-radius: 7px;
+    margin-bottom: 25px;
+    width: 70%;
+    margin-left: auto; // 左のマージンを自動で設定して右寄せにする
+    margin-right: 0; // 右のマージンを0に設定
+  }
+
+  p:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 70%; // 矢印をフキダシの右側に配置するために調整
+    border: 15px solid transparent;
+    border-top: 15px solid #e1e1e1;
+    width: 0;
+    height: 0;
+  }
+}
