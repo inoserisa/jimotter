@@ -19,6 +19,10 @@ document.addEventListener("turbo:load", function() {
   var prefectureSelect = document.querySelector('select[name="post[prefecture_id]"]');
   var citySelect = document.querySelector('select[name="post[city_id]"]');
 
+  if (!prefectureSelect || !citySelect) {
+    return;
+  }
+
   function loadCities(prefectureId, selectedCityId = null) {
     fetch(`/cities.json?prefecture_id=${prefectureId}`)
       .then(response => response.json())
