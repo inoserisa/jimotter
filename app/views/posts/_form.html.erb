@@ -15,42 +15,5 @@
 <% end %>
 
 <script>
-document.addEventListener("turbo:load", function() {
-  var prefectureSelect = document.querySelector('select[name="post[prefecture_id]"]');
-  var citySelect = document.querySelector('select[name="post[city_id]"]');
-
-  if (!prefectureSelect || !citySelect) {
-    return;
-  }
-
-  function loadCities(prefectureId, selectedCityId = null) {
-    fetch(`/cities.json?prefecture_id=${prefectureId}`)
-      .then(response => response.json())
-      .then(data => {
-        citySelect.innerHTML = '<option value="" selected>市区町村を選択</option>';
-        data.forEach(function(city) {
-          var option = document.createElement('option');
-          option.value = city.id;
-          option.text = city.name;
-          if (selectedCityId && city.id == selectedCityId) {
-            option.selected = true;
-          }
-          citySelect.appendChild(option);
-        });
-      })
-      .catch(error => console.error('Error:', error));
-  }
-
-  prefectureSelect.addEventListener("change", function() {
-    var prefectureId = this.value;
-    if (prefectureId) {
-      loadCities(prefectureId);
-    }
-  });
-
-  // もし編集フォームの初期表示で都道府県が設定されている場合
-  if (prefectureSelect.value) {
-    loadCities(prefectureSelect.value, <%= @post.city_id.to_json %>);
-  }
-});
+  setupPrefectureCitySelect('select[name="post[prefecture_id]"]', 'select[name="post[city_id]"]');
 </script>
