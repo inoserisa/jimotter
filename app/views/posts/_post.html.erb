@@ -1,7 +1,7 @@
-<div class="col-12 card mb-3 text-decoration-none shadow fadeUp">
+<div class="col-12 card mb-3 text-decoration-none shadow fadeUp" onclick="handleCardClick(event, '<%= post_path(post.id) %>')" style="cursor: pointer;">
   <div class="card-body">
     <div class="d-flex mb-2">
-      <%= link_to post.user.name, user_path(post.user), class: "link-dark name-link" %>
+      <%= link_to post.user.name, user_path(post.user), class: "link-dark name-link", onclick: "event.stopPropagation();" %>
       <div class="area-box ms-2"><%= post.prefecture.name %></div>
       <div class="area-box ms-2"><%= post.city.name %></div>
       <% if current_user %>
@@ -31,3 +31,12 @@
     <small class="mb-0 d-flex flex-row-reverse"><%= l post.created_at %></small>
   </div>
 </div>
+
+<script>
+  function handleCardClick(event, url) {
+    // クリックされた要素がリンク以外の場合のみページ遷移
+    if (!event.target.closest("a")) {
+      window.location.href = url;
+    }
+  }
+</script>
