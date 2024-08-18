@@ -4,7 +4,7 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 
 document.addEventListener('turbo:load', function() {
-  var loader = document.querySelector('.loader-wrap');
+  const loader = document.querySelector('.loader-wrap');
 
   // ページの読み込みが完了したらアニメーションを非表示
   window.addEventListener('load', function() {
@@ -63,16 +63,16 @@ document.addEventListener('turbo:before-stream-render', function() {
 });
 
 function initializeTooltips() {
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 }
 
 function hideTooltips() {
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-    var tooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+    const tooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
     if (tooltip) {
       tooltip.hide();
     }

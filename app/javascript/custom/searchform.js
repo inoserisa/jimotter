@@ -1,6 +1,6 @@
 function initializeCitySelectForSearch() {
-  var prefectureSelect = document.querySelector('select[name="q[prefecture_id_eq]"]');
-  var citySelect = document.querySelector('select[name="q[city_id_eq]"]');
+  const prefectureSelect = document.querySelector('select[name="q[prefecture_id_eq]"]');
+  const citySelect = document.querySelector('select[name="q[city_id_eq]"]');
 
   if (!prefectureSelect || !citySelect) {
     return;
@@ -13,7 +13,7 @@ function initializeCitySelectForSearch() {
         .then(data => {
           citySelect.innerHTML = '<option value="">市区町村</option>';
           data.forEach(function(city) {
-            var option = document.createElement('option');
+            const option = document.createElement('option');
             option.value = city.id;
             option.text = city.name;
             citySelect.appendChild(option);
@@ -30,12 +30,12 @@ function initializeCitySelectForSearch() {
   }
 
   prefectureSelect.addEventListener("change", function() {
-    var prefectureId = this.value;
+    const prefectureId = this.value;
     updateCityOptions(prefectureId);
   });
 
-  var initialPrefectureId = prefectureSelect.value;
-  var initialSelectedCityId = citySelect.value;
+  const initialPrefectureId = prefectureSelect.value;
+  const initialSelectedCityId = citySelect.value;
 
   if (initialPrefectureId) {
     updateCityOptions(initialPrefectureId, initialSelectedCityId);
@@ -43,3 +43,4 @@ function initializeCitySelectForSearch() {
 }
 
 document.addEventListener("turbo:load", initializeCitySelectForSearch);
+document.addEventListener("DOMContentLoaded", initializeCitySelectForSearch);
