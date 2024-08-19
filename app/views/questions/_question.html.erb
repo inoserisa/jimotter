@@ -12,7 +12,7 @@
             </div>
           <% end %>
         <div class="ms-auto">
-          <%= link_to question_path(question.id) do %>
+          <%= link_to question_path(question.id), onclick: "event.stopPropagation();" do %>
             <i class="fa-solid fa-comment-dots"></i>
           <% end %>
         </div>
