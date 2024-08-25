@@ -8,10 +8,9 @@
     <div class="col-lg-8 offset-lg-2">
       <div class="col-12 card shadow mb-5">
         <div class="card-body">
-          <div class="mypage-container mt-3 d-flex">
-            <h6><span class="user-icon" style="background-color: #007bff; color: white; padding: 5px 20px; border-radius: 5px;font-weight: bold; margin-right: 10px;">ユーザー名</span>
-              <%= @user.name %>
-            </h6>
+          <div class="mypage-container d-flex align-items-center">
+            <div class="username-box">ユーザー名</div>
+            <div><%= @user.name %></div>
             <% if current_user && current_user.own?(@user) %>
               <div class="ms-auto">
                 <%= link_to 'ユーザー情報編集', edit_user_registration_path, class:"user-edit-button" %>
