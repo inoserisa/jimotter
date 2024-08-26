@@ -21,19 +21,19 @@
       </div>
 
       <div class="col-sm-12">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-pills" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="post-tab" data-bs-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="true">投稿一覧</a>
+            <button type="button" class="nav-link active" id="post-tab" data-bs-toggle="pill" href="#post" role="tab" aria-controls="post" aria-selected="true">投稿一覧</button>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" id="question-tab" data-bs-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">質問一覧</a>
+            <button type="button" class="nav-link mx-2" id="question-tab" data-bs-toggle="pill" href="#question" role="tab" aria-controls="question" aria-selected="false">質問一覧</button>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" id="bookmark-tab" data-bs-toggle="tab" href="#bookmark" role="tab" aria-controls="bookmark" aria-selected="false">ブックマーク</a>
+            <button type="button" class="nav-link" id="bookmark-tab" data-bs-toggle="pill" href="#bookmark" role="tab" aria-controls="bookmark" aria-selected="false">ブックマーク</button>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+          <div class="tab-pane fade show active mt-2" id="post" role="tabpanel" aria-labelledby="post-tab" tabindex="0">
             <% if @posts.present? %>
               <%= turbo_frame_tag "posts-page-#{@posts.current_page}" do %>
                 <%= render partial: 'posts/post', collection: @posts, as: :post %>
@@ -43,7 +43,7 @@
               <p class="text-center mt-5">まだ投稿はありません。</p>
             <% end %>
           </div>
-          <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+          <div class="tab-pane fade mt-2" id="question" role="tabpanel" aria-labelledby="question-tab" tabindex="0">
             <% if @questions.present? %>
               <%= turbo_frame_tag "questions-page-#{params[:question_page] || @questions.current_page}" do %>
                 <%= render 'questions/question', questions: @questions %>
@@ -53,7 +53,7 @@
               <p class="text-center mt-5">まだ質問はありません。</p>
             <% end %>
           </div>
-          <div class="tab-pane" id="bookmark" role="tabpanel" aria-labelledby="bookmark-tab">
+          <div class="tab-pane mt-2" id="bookmark" role="tabpanel" aria-labelledby="bookmark-tab" tabindex="0">
             <% if @bookmark_posts.present? %>
               <%= turbo_frame_tag "bookmark-posts-page-#{params[:bookmark_posts_page] || @bookmark_posts.current_page}" do %>
                 <%= render partial: 'posts/post', collection: @bookmark_posts, as: :post %>

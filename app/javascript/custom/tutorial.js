@@ -17,7 +17,7 @@ function startTour() {
       element: document.querySelector('#map'),
       intro: "投稿地域がどこにあるのか地図を見ることができます。また、コメントの投稿もできます。"
     },{
-      element: document.querySelector('a[data-bs-toggle="tab"]'), // 最初のタブボタンを指定
+      element: document.querySelector('button[data-bs-toggle="pill"]'), // 最初のタブボタンを指定
       intro: "タブを切り替えて質問一覧を表示できます。",
       position: 'bottom' // ハイライトの位置を指定
     });
@@ -33,7 +33,7 @@ function startTour() {
       element: document.querySelector('#map'),
       intro: "投稿地域がどこにあるのか地図を見ることができます。また、コメントの投稿もできます。"
     },{
-      element: document.querySelector('a[data-bs-toggle="tab"]'), // 最初のタブボタンを指定
+      element: document.querySelector('button[data-bs-toggle="pill"]'), // 最初のタブボタンを指定
       intro: "タブを切り替えて質問一覧を表示できます。",
       position: 'bottom' // ハイライトの位置を指定
     });
