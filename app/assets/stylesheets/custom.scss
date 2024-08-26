@@ -143,3 +143,14 @@ body {
   text-decoration: none; /* テキストの下線を削除 */
   transform: scale(1.1); /* ホバー時の拡大率変更 */
 }
+
+/* タブ */
+.nav-pills .nav-link {
+  background: #dddddd;
+  color: #434343;
+}
+
+.nav-pills .nav-link.active {
+  background: #185a9d;
+  font-weight: bold;
+}
