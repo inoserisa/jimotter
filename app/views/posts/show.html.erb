@@ -7,6 +7,18 @@
 </div>
 <% breadcrumb :post_show, @post, @prefecture, @city %>
 
+<div class="modal js-modal">
+  <div class="modal-container">
+    <div class="modal-content">
+      <p>投稿しました！</p>
+      <button type="button" class="btn btn-outline-secondary mb-2 w-75 mx-auto" id="continue-posting">続けて投稿する</button>
+      <button type="button" class="btn btn-outline-secondary mb-2 w-75 mx-auto" id="go-home">ホームに戻る</button>
+    </div>
+    <div class="modal-close js-modal-close">✕</div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
@@ -53,13 +65,6 @@
               data-longitude="<%= @post.longitude %>">
           </div>
 
-          <% if flash[:notice] == "投稿しました" %>
-            <div class="d-flex flex-column flex-md-row w-100">
-              <%= link_to '続けて投稿する', new_post_path, class:'btn btn-primary homeback-button flex-grow-1 mb-2 mb-md-0' %>
-              <%= link_to 'ホームに戻る', root_path, class:'btn btn-primary homeback-button flex-grow-1' %>
-            </div>
-          <% end %>
-
           <div class="mt-4">
             <%= render 'comments/form', comment: @comment, post: @post %>
           </div>
@@ -71,3 +76,37 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("turbo:load", function() {
+  const modal = document.querySelector('.js-modal'),
+        close = document.querySelector('.js-modal-close');
+  const successMessage = "<%= flash[:notice] %>"; // コントローラーで設定したフラッシュメッセージを取得
+
+  if (successMessage) {
+    modal.classList.add('is-active');
+  }
+
+  function modalClose() {
+    modal.classList.remove('is-active');
+  }
+  close.addEventListener('click', modalClose);
+
+  //「モーダルの外側」をクリックしてモーダルを閉じる
+  function modalOut(e) {
+    if (e.target == modal) {
+      modal.classList.remove('is-active');
+    }
+  }
+  addEventListener('click', modalOut);
+
+  // ボタンのクリックイベント
+  document.getElementById("continue-posting").addEventListener("click", function() {
+    window.location.href = "/posts/new";
+  });
+
+  document.getElementById("go-home").addEventListener("click", function() {
+    window.location.href = "/";
+  });
+});
+</script>
