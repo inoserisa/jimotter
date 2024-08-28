@@ -22,7 +22,7 @@ class Post < ApplicationRecord
 
     address = "#{city_name}, #{prefecture_name}, Japan"
     
-    response = RestClient.get 'https://maps.googleapis.com/maps/api/geocode/json', {params: {address: address, key: 'AIzaSyB3Jqa_kk73ICNwFbTSD1OprtSeWv2G5ek'}}
+    response = RestClient.get 'https://maps.googleapis.com/maps/api/geocode/json', {params: {address: address, key: ENV['GOOGLE_MAPS_API_KEY']}}
     if response.code == 200
       data = JSON.parse(response.body)
       Rails.logger.debug "Geocode response: #{data}" # レスポンスのログ出力
