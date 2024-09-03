@@ -52,6 +52,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "letter_opener_web"
   gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
