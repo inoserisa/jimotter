@@ -8,7 +8,7 @@
 }
 
 /* モーダルと背景の指定 */
-.modal{
+.post-modal{
   position: fixed;
   top: 0;
   left: 0;
@@ -22,10 +22,11 @@
   display: none;
   transition: .3s;
   box-sizing: border-box;
+  z-index: 999;
 }
 
 /* モーダルの擬似要素の指定 */
-.modal:before{
+.post-modal:before{
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -34,13 +35,13 @@
 }
 
 /* クラスが追加された時の指定 */
-.modal.is-active{
+.post-modal.is-active{
   opacity: 1;
   display:block;
 }
 
 /* モーダル内側の指定 */
-.modal-container{
+.post-modal-container{
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -49,7 +50,7 @@
 }
 
 /* モーダルを閉じるボタンの指定 */
-.modal-close{
+.post-modal-close{
   position: absolute;
   display: flex;
   align-items: center;
@@ -65,7 +66,7 @@
 }
 
 /* モーダルのコンテンツ部分の指定 */
-.modal-content{
+.post-modal-content{
   background: #fff;
   text-align: center;
   line-height: 1.8;
@@ -73,7 +74,7 @@
 }
 
 /* モーダルのコンテンツ部分のテキストの指定 */
-.modal-content p{
+.post-modal-content p{
   margin: 1em 0;
   font-weight: bold;
   font-size: medium;
