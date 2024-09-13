@@ -61,6 +61,7 @@ group :development do
   gem "pry-rails"
   gem "pry-byebug"
   gem "pry-nav"
+  gem "spring-commands-rspec"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
