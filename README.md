@@ -95,6 +95,7 @@ users ||--o{ answers: ""
 questions ||--o{ answers: ""
 answers }o--|| prefectures: ""
 answers }o--|| cities: ""
+areas }o--|| questions: ""
 
 users {
 integer id PK
@@ -162,6 +163,7 @@ questions{
   integer id PK
   integer user_id FK
   text content
+  integer area_id FK
 }
 
 answers{
@@ -171,5 +173,10 @@ answers{
   integer prefecture_id FK
   integer city_id FK
   text content
+}
+
+areas{
+  integer id PK
+  string name
 }
 ```
