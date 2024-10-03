@@ -82,6 +82,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys:[:name, :agreement_terms])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :agreement_terms])
   end
 end
