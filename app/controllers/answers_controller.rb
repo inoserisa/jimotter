@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only:[:create]
+  before_action :authenticate_user!, only: [:create]
 
   def create
     @answer = current_user.answers.build(answer_params)

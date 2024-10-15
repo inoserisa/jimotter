@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     # @posts = Post.all.includes(:user,:prefecture,:city).order(created_at: :desc)
     @q = Post.ransack(params[:q])
@@ -13,9 +12,19 @@ class PostsController < ApplicationController
 
     @count = @posts.count
   end
-  
+
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
+  end
+
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
   end
 
   def create
@@ -28,16 +37,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-    @comments = @post.comments.includes(:user)
-  end
-
-  def edit
-  @post = current_user.posts.find(params[:id])
-  end
-  
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)

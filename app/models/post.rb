@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 200 }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["prefecture", "city", "prefecture_id", "city_id"]
+    %w(prefecture city prefecture_id city_id)
   end
 
   private
@@ -21,8 +21,8 @@ class Post < ApplicationRecord
     city_name = self.city.name
 
     address = "#{city_name}, #{prefecture_name}, Japan"
-    
-    response = RestClient.get 'https://maps.googleapis.com/maps/api/geocode/json', {params: {address: address, key: ENV['GEOCODE_API_KEY']}}
+
+    response = RestClient.get 'https://maps.googleapis.com/maps/api/geocode/json', { params: { address: address, key: ENV['GEOCODE_API_KEY'] } }
     if response.code == 200
       data = JSON.parse(response.body)
       Rails.logger.debug "Geocode response: #{data}" # レスポンスのログ出力

@@ -29,11 +29,11 @@ class User < ApplicationRecord
   end
 
   def bookmark(post)
-    bookmarks.create(post: post)
+    bookmarks.create(post:)
   end
 
   def unbookmark(post)
-    bookmarks.find_by(post: post)&.destroy
+    bookmarks.find_by(post:)&.destroy
   end
 
   def bookmark?(post)
@@ -50,13 +50,13 @@ class User < ApplicationRecord
       authenticate.user = user
       authenticate.save
     end
-    { user: user, authenticate: authenticate }
+    { user:, authenticate: }
   end
-  
+
   private
-  
+
   def email_not_taken_by_deleted_user
-    if User.with_deleted.where.not(id: self.id).where(email: email).exists?
+    if User.with_deleted.where.not(id: self.id).exists?(email:)
       errors.add(:email, 'は使用不可です')
     end
   end

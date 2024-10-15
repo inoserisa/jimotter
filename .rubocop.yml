@@ -1,12 +1,22 @@
 require: rubocop-rails
 
 AllCops:
+  TargetRubyVersion: 3.2.3
+  TargetRailsVersion: 7.1.3.2
   Exclude:
     - "vendor/**/*"
     - "db/**/*"
     - "config/**/*"
     - "bin/*"
     - "node_modules/**/*"
+    - "db/migrate/**/*"
+    - "app/channels/**/*"
+    - "config/**/*"
+    - "config.ru"
+    - "db/schema*.rb"
+    - "public/**/*"
+    - "tmp/**/*"
+    - "log/**/*"
 
   NewCops: enable
 

@@ -20,7 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def authorization(provider)
-    authenticate_info = User.from_omniauth(request.env["omniauth.auth"])
+    authenticate_info = User.from_omniauth(request.env['omniauth.auth'])
     @user = authenticate_info[:user]
 
     if @user.persisted?
@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: provider) if is_navigational_format?
     else
       @authenticate_id = authenticate_info[:authenticate].id
-      session[:authenticate_id] = @authenticate_id  # ここでセッションに保存
+      session[:authenticate_id] = @authenticate_id # ここでセッションに保存
       render 'devise/registrations/new'
     end
   end
