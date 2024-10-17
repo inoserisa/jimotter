@@ -10,6 +10,6 @@ class Bookmark < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, user: self.post.user, action_type: :bookmarked_to_own_post)
+    Notification.create(subject: self, user: post.user, action_type: :bookmarked_to_own_post)
   end
 end
