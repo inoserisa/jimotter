@@ -17,8 +17,8 @@ class Post < ApplicationRecord
   private
 
   def geocode
-    prefecture_name = self.prefecture.name
-    city_name = self.city.name
+    prefecture_name = prefecture.name
+    city_name = city.name
 
     address = "#{city_name}, #{prefecture_name}, Japan"
 
