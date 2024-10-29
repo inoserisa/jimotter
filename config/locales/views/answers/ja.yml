@@ -1,0 +1,5 @@
+ja:
+  answers:
+    create:
+      success: "回答を投稿しました"
+      failed: "回答の投稿に失敗しました"

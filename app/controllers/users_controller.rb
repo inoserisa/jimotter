@@ -9,6 +9,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to root_path, notice: '退会しました', status: :see_other
+    redirect_to root_path, notice: t('devise.registrations.destroyed'), status: :see_other
   end
 end
