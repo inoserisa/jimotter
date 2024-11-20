@@ -5,7 +5,9 @@ class City < ApplicationRecord
 
   validates :name, presence: true
 
+  # rubocop:disable Lint/UnusedMethodArgument
   def self.ransackable_attributes(auth_object = nil)
     ['name']
   end
+  # rubocop:enable Lint/UnusedMethodArgument
 end
