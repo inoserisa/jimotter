@@ -10,9 +10,11 @@ class Post < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 200 }
 
+  # rubocop:disable Lint/UnusedMethodArgument
   def self.ransackable_attributes(auth_object = nil)
     %w(prefecture city prefecture_id city_id)
   end
+  # rubocop:enable Lint/UnusedMethodArgument
 
   private
 
