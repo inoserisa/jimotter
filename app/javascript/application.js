@@ -3,6 +3,9 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 
+import "./custom/tutorial"
+import "./custom/searchform"
+
 document.addEventListener('turbo:load', function() {
   const loader = document.querySelector('.loader-wrap');
 
