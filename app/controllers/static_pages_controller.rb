@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :prefecture, :city).order(created_at: :desc).limit(15)
     @questions = Question.all.includes(:user, :area).order(created_at: :desc)
-    @question_pickups = Question.includes(:area).order('RAND()').limit(1)
+    @question_pickups = Question.includes(:area).order('RANDOM()').limit(1)
   end
 
   def about
