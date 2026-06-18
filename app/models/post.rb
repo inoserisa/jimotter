@@ -24,20 +24,24 @@ class Post < ApplicationRecord
 
     address = "#{city_name}, #{prefecture_name}, Japan"
 
-    response = RestClient.get 'https://maps.googleapis.com/maps/api/geocode/json', { params: { address: address, key: ENV['GEOCODE_API_KEY'] } }
-    if response.code == 200
-      data = JSON.parse(response.body)
-      Rails.logger.debug "Geocode response: #{data}" # レスポンスのログ出力
-      if data['status'] == 'OK' && data['results'].any?
-        self.latitude = data['results'][0]['geometry']['location']['lat']
-        self.longitude = data['results'][0]['geometry']['location']['lng']
-      else
-        Rails.logger.error "Geocode failed for address: #{address}"
-      end
+    response = RestClient.get(
+      'https://maps.googleapis.com/maps/api/geocode/json',
+      params: {
+        address: address,
+        key: ENV['GEOCODE_API_KEY']
+      }
+    )
+
+    data = JSON.parse(response.body)
+
+    Rails.logger.error "GEOCODE STATUS: #{data['status']}"
+    Rails.logger.error "GEOCODE RESPONSE: #{data}"
+
+    if data['status'] == 'OK' && data['results'].any?
+      self.latitude = data['results'][0]['geometry']['location']['lat']
+      self.longitude = data['results'][0]['geometry']['location']['lng']
     else
-      Rails.logger.error "Geocode request failed with code: #{response.code}"
+      Rails.logger.error "Geocode failed for address: #{address}"
     end
-  rescue RestClient::ExceptionWithResponse => e
-    Rails.logger.error "Geocode request failed: #{e.response}"
   end
 end
