@@ -1,8 +1,11 @@
 function initMap() {
   const mapElement = document.getElementById('map');
+
+  if (!mapElement) return;
+
   const location = {
-    lat: parseFloat(mapElement.getAttribute('data-latitude')),
-    lng: parseFloat(mapElement.getAttribute('data-longitude'))
+    lat: parseFloat(mapElement.dataset.latitude),
+    lng: parseFloat(mapElement.dataset.longitude)
   };
 
   const map = new google.maps.Map(mapElement, {
@@ -10,7 +13,8 @@ function initMap() {
     center: location,
     mapId: "DEMO_MAP_ID"
   });
-  const marker = new google.maps.marker.AdvancedMarkerElement({
+
+  new google.maps.marker.AdvancedMarkerElement({
     position: location,
     map: map
   });
