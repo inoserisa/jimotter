@@ -6,6 +6,7 @@ import * as bootstrap from "bootstrap"
 import "./custom/google_map"
 import "./custom/tutorial"
 import "./custom/searchform"
+import "./custom/prefecture_city_select"
 
 document.addEventListener('turbo:load', function() {
   const loader = document.querySelector('.loader-wrap');
